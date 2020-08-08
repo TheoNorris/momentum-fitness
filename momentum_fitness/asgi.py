@@ -1,5 +1,5 @@
 """
-ASGI config for boutique_ado project.
+ASGI config for momentum_fitness project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'boutique_ado.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'momentum_fitness')
 
 application = get_asgi_application()

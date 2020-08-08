@@ -1,0 +1,44 @@
+html {
+    height: 100%;
+}
+
+p{
+    margin: 0;
+}
+
+body {
+    background: url('/media/swimmer.jpg') rgb(21 77 82 / 80%) no-repeat;
+    background-size:cover;
+    background-blend-mode: multiply;
+    color: #555;
+    font-family: 'Lato';
+    z-index: 1;
+}
+
+.navbar-light .navbar-toggler{
+    position: absolute;
+    right: 3%;
+}
+
+.navbar{
+    justify-content: end;
+}
+
+nav.bg-light{
+    background-color: white;
+    opacity: 0.8;
+}
+
+.Head-title{
+    font-family: 'Varela', sans-serif;
+    letter-spacing: 5px;
+    margin-left: 30px;
+    font-size: 50px;
+    color: #00d4d4;
+}
+
+.title-p{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #46a9ff;
+}
