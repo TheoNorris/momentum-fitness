@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-header">Products</h1>
+<div class="overlay">
+        <div class="container">
+            {% if product.image %}
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+                {% else %}
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                </a>
+            {% endif %}
+            <h4>{{ product.name }}</h4>
+            <p>{{ product.description }}</p>
+            <p class="card-text">€{{ product.price }}</p>
+                <p class="card-text"><i class="far fa-star"></i> {{ product.rating }}/5</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        </div>
+</div>
+{% endblock %}

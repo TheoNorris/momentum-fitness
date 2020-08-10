@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-header">Products</h1>
+<div class="overlay">
+    <div class="row">
+        <div class="product-div">
+            {% for product in products %}
+            <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    {% if product.image %}
+                    <a href="{% url 'product_details' product.id %}">
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product_details' product.id %}">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
+                    {% endif %}
+                    <div class="card-body">
+                    <a href="{% url 'product_details' product.id %}">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">€{{ product.price }}</p>
+                            <p class="card-text"><i class="far fa-star"></i> {{ product.rating }}/5</p>
+                    </a>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
