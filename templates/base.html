@@ -71,6 +71,24 @@
   </header>
 
   <div class="container-fluid base-container">
+
+  <div class="header-and-select-div">
+{% block title %}{% endblock %}
+<a href="{% url 'view_cart' %}" class="shopping-bag-icon">
+    <div>
+        <i class="fas fa-shopping-cart shoppingbag-colour"></i>
+        <p class="shoppingbag-colour">
+            {% if  grand_total %}
+                €{{ grand_total | floatformat:2}}
+            {% else %}
+                €0.00
+            {% endif %}
+        
+        </p>
+    </div>
+  </a>
+<hr>
+
     {% block content %}
     {% endblock %}
   </div>
