@@ -1,22 +1,12 @@
 {% extends "base.html" %}
+
+{% block title %}
+<h1 class="page-header">Products</h1>
+{% endblock %}
+
 {% block content %}
 
-<div class="header-and-select-div">
-<h1 class="page-header">Products</h1>
-<a href="#" class="shopping-bag-icon">
-    <div>
-        <i class="fas fa-shopping-bag shoppingbag-colour"></i>
-        <p class="shoppingbag-colour">
-            {% if  grand_total %}
-                €{{ grand_total | floatformat:2}}
-            {% else %}
-                €0.00
-            {% endif %}
-        
-        </p>
-    </div>
-  </a>
-<hr>
+
     <select id="sort-selector" class="sort-select border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
