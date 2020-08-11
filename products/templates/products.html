@@ -1,27 +1,82 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="header-and-select-div">
 <h1 class="page-header">Products</h1>
+<a href="#" class="shopping-bag-icon">
+    <div>
+        <i class="fas fa-shopping-bag shoppingbag-colour"></i>
+        <p class="shoppingbag-colour">
+            {% if  grand_total %}
+                €{{ grand_total | floatformat:2}}
+            {% else %}
+                €0.00
+            {% endif %}
+        
+        </p>
+    </div>
+  </a>
+<hr>
+    <select id="sort-selector" class="sort-select border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+        <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+        <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+    </select>
+    <div>
+        <p class="search-quantity-p">
+        {% if search or search_categories or surrent_sort != 'None_None' %}
+            <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+        {% endif %}
+        {{ products|length }} Products{% if search %} found for <strong>"{{ search }}"</strong>{% endif %}
+        </p>
+    </div>
+</div>
 <div class="overlay">
     <div class="row">
         <div class="product-div">
             {% for product in products %}
-            <div class="col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            <div class="card-div col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     {% if product.image %}
+                    <div class="product-image-div">
                     <a href="{% url 'product_details' product.id %}">
                         <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
                     </a>
+                    </div>
                     {% else %}
+                    <div class="product-image-div">
                     <a href="{% url 'product_details' product.id %}">
                         <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                     </a>
+                    </div>
                     {% endif %}
                     <div class="card-body">
                     <a href="{% url 'product_details' product.id %}">
                         <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">€{{ product.price }}</p>
-                            <p class="card-text"><i class="far fa-star"></i> {{ product.rating }}/5</p>
+                                {% if product.category.name == 'Supplements' %}
+                                    <a href="{% url 'products' %}?category={{ product.category.name }}">
+                                        <p><i class="fas fa-leaf"></i>   {{ product.category.name }}</p>
+                                    </a>
+                                {% elif product.category.name == 'Clothing' %}
+                                    <a href="{% url 'products' %}?category={{ product.category.name }}">
+                                        <p><i class="fas fa-tshirt"></i>   {{ product.category.name }}</p>
+                                    </a>
+                                {% elif product.category.name == 'Equipment' %}
+                                    <a href="{% url 'products' %}?category={{ product.category.name }}">
+                                        <p><i class="fas fa-dumbbell"></i>   {{ product.category.name }}</p>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'products' %}?category={{ product.category.name }}">
+                                        <p><i class="fas fa-allergies"></i>   {{ product.category.name }}</p>
+                                    </a>
+                                
+                                {% endif %}
+                            <p class="card-text"><i class="far fa-star"></i>  {{ product.rating }}/5</p>
                     </a>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
@@ -31,4 +86,30 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort", sort);
+                currentUrl.searchParams.delete("direction", direction);
+                
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
 {% endblock %}
