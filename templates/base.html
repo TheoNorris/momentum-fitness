@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
@@ -23,13 +23,13 @@
     <title>Momentum Health and Fitness</title>
   </head>
 
-    {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
-
   <body>
 
   <header>
+
+   {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
   
   <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#"><h1 class="Head-title">Momentum</h1></a> <p class="title-p">Health and Fitness</p>
@@ -68,12 +68,18 @@
     </form>
   </div>
 </nav>
+<div class="gold-member-banner">
+<p><a href="">Join us</a> now and receive a gold membership for 39.99!</p>
+
+<img class="home-about-image" src="{% static 'images/gold.jpg' %}" alt="Personal Trainer">
+</div>
   </header>
 
   <div class="container-fluid base-container">
-
+ {% block imagetop %}{% endblock %}
   <div class="header-and-select-div">
 {% block title %}{% endblock %}
+{% if cart_items %}
 <a href="{% url 'view_cart' %}" class="shopping-bag-icon">
     <div>
         <i class="fas fa-shopping-cart shoppingbag-colour"></i>
@@ -83,10 +89,11 @@
             {% else %}
                 €0.00
             {% endif %}
-        
         </p>
     </div>
-  </a>
+</a>
+{% endif %}
+</div>
 <hr>
 
     {% block content %}
@@ -95,6 +102,6 @@
 
     {% block postloadjs %}
     {% endblock %}
-    
+  
   </body>
 </html>
