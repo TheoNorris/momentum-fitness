@@ -23,6 +23,10 @@ body {
     z-index: 1;
 }
 
+a {
+    text-decoration: none;
+}
+
 .navbar-light .navbar-toggler{
     position: absolute;
     right: 3%;
@@ -53,7 +57,36 @@ nav.bg-light{
     color: #46a9ff;
 }
 
-.gold
+.gold-member-banner{
+    position: relative;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.gold-member-text{
+    z-index: 1;
+    color: gold;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.gold-member-link{
+    color: rgb(255, 106, 6);
+}
+
+.gold-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .6;
+}
 
 .entry-section{
     position: relative;
@@ -65,14 +98,40 @@ nav.bg-light{
     overflow: hidden;
 }
 
+.entry-page-header{
+    font-family: 'Red Rose';
+    font-size: 60px;
+    color: #8e8e8e;
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 0;
+}
+
+.entry-page-p{
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.entry-page-link{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: gold;
+    margin-bottom: 5px;
+}
+
+.entry-page-link:hover{
+    color: #ff9a00;
+}
+
 .index-text-div{
     text-align: center;
     z-index: 1;
-    animation: fadeIn ease 30s;
-  -webkit-animation: fadeIn ease 30s;
-  -moz-animation: fadeIn ease 30s;
-  -o-animation: fadeIn ease 30s;
-  -ms-animation: fadeIn ease 30s;
+    animation: fadeIn ease 40s;
+  -webkit-animation: fadeIn ease 40s;
+  -moz-animation: fadeIn ease 40s;
+  -o-animation: fadeIn ease 40s;
+  -ms-animation: fadeIn ease 40s;
 }
 
 .video-container{
@@ -89,11 +148,11 @@ nav.bg-light{
     width: 100%;
     height: 100vh;
     background-color: black;
-     animation: fadeIn ease 15s;
-  -webkit-animation: fadeIn ease 10s;
-  -moz-animation: fadeIn ease 10s;
-  -o-animation: fadeIn ease 10s;
-  -ms-animation: fadeIn ease 10s;
+     animation: fadeIn ease 25s;
+  -webkit-animation: fadeIn ease 20s;
+  -moz-animation: fadeIn ease 20s;
+  -o-animation: fadeIn ease 20s;
+  -ms-animation: fadeIn ease 20s;
    }
 
 @keyframes fadeIn {
@@ -144,7 +203,10 @@ nav.bg-light{
 .home-about-header{
     font-size: 35px;
     margin-bottom: 25px;
-    letter-spacing: 1px;
+    font-family: 'Red Rose';
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: black;
 }
 
 .home-about-image{
@@ -174,7 +236,7 @@ border-radius: 10px;
 }
 
 div#map{
-    min-height: 450px;
+    min-height: 90%;
     border-radius: 10px;
     }
 
@@ -184,7 +246,6 @@ div#map{
     font-weight: 500;
     letter-spacing: 5px;
     display: contents;
-    font-family: 'Arima Madurai', sans-serif;
 }
 
 .sort-select{
@@ -202,6 +263,10 @@ div#map{
 .product-div{
     width: 100%;
     display: contents;
+}
+
+.products-row{
+    padding: 0 30px;
 }
 
 .card-div{
