@@ -216,11 +216,6 @@ nav.bg-light{
 .shopping-bag-icon{
     float: right;
     text-align: center;
-    color: white;
-}
-
-.shoppingbag-colour{
-    color: white;
 }
 
 .base-container{
@@ -243,7 +238,7 @@ div#map{
 .page-header{
     color: #d4d4d4;
     font-size: 50px;
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: 5px;
     display: contents;
 }
@@ -293,4 +288,32 @@ background-color: rgba(255, 255, 255, .8);
 
 .card-title{
     min-height: 50px;
+}
+
+.product-checkout-details{
+    min-width: 100%;
+}
+
+
+.product-cart-image{
+    height: 150px;
+}
+
+.product-cart-container{
+    width: 1000px;
+    background-color: rgba(255, 255, 255, .7);
+    text-align: center;
+}
+
+.cart-overlay{
+    margin: 0 auto 20px;
+    
+}
+
+.cart-total-div{
+    background-color: rgb(153 193 199 / 80%);
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
 }

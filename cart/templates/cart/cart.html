@@ -1,48 +1,81 @@
-{% extends "base.html" %}
-
-{% block title %}
-<h1 class="page-header">Products</h1>
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}
+<h1 class="page-header">Shopping Cart</h1>
+{% endblock %} {% block content %}
+<div class="container-fluid outter-cart-container">
+{% for item in cart_items %}
 <div class="row">
-<div class="overlay">
-        {% if bag_items %}
-        <div class="container product-detail-container">
-            <div class="row">
-                <div class="col-lg-4">
-                {% if product.image %}
-                    <div class="product-image-div">
-                    <a href="{{ product.image.url }}" target="_blank">
-                        <img class="product-detail-image" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
-                    </div>
-                    {% else %}
-                    <div class="product-image-div">
-                    <a href="{{ product.image.url }}" target="_blank">
-                        <img class="product-detail-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                    </a>
-                    </div>
-                {% endif %}
-                </div>
-            <div class="col-lg-8 col-sm-12">
-            <h4>{{ product.name }}</h4>
-            <p>{{ product.description }}</p>
-            <p class="card-text">€{{ product.price }}</p>
-                {% if product.category %}
-                        <a href="{% url 'products' %}?category={{ product.category.name }}">
-                            <p><i class="fas fa-leaf"> </i>{{ product.category.name }}</p>
-                        </a>
-                {% endif %}
-                <p class="card-text"><i class="far fa-star"></i> {{ product.rating }}/5</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-               </div>
-            </div>
+  <div class="overlay cart-overlay">
+    {% if cart_items %}
+    <div class="product-cart-container">
+      <div class="row">
+        <div class="col-lg-4">
+          {% if item.product.image %}
+          <div class="product-image-div">
+            <a href="{{ item.product.image.url }}" target="_blank">
+              <img
+                class="product-cart-image"
+                src="{{ item.product.image.url }}"
+                alt="{{ item.product.name }}"
+              />
+            </a>
+          </div>
+          {% else %}
+          <div class="product-image-div">
+            <a href="{{ item.product.image.url }}" target="_blank">
+              <img
+                class="product-cart-image"
+                src="{{ MEDIA_URL }}noimage.png"
+                alt="{{ item.product.name }}"
+              />
+            </a>
+          </div>
+          {% endif %}
         </div>
-        {% else %}
-        <h2>Your bag is empty!</h2>
-        <a href="{% url 'products' %}" class="btn btn-outline-info">Products</a>
-        {% endif %}
+        <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-4">
+            <h5>Product Name</h5>
+            <hr />
+            <p>{{ item.product.name }}</p>
+          </div>
+          <div class="col-lg-3">
+            <h5>Price</h5>
+            <hr />
+            <p>€ {{ item.product.price }}</p>
+          </div>
+          <div class="col-lg-2">
+            <h5>Qty.</h5>
+            <hr />
+            <p>{{ item.quantity }}</p>
+          </div>
+          <div class="col-lg-3">
+            <h5>Subtotal</h5>
+            <hr />
+            <p>€{{ item.product.price }}</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+    <h2>Your cart is empty!</h2>
+    <a href="{% url 'products' %}" class="btn btn-outline-info">Products</a>
+    {% endif %}
+{% endfor %}
+<div class="cart-total-div">
+<h5>Cart Total: €{{ total|floatformat:2 }}</h5>
+<h5>Delivery: €{{ total|floatformat:2 }}</h5>
+<h5>Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+{% if free_delivery_delta > 0 %}
+<p>
+    You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
+</p>
+{% endif %}
+<a href="" class="btn btn-primary">Keep Shopping</a>
+<a href="" class="btn btn-primary">Secure Checkout</a>
+
 </div>
 </div>
 {% endblock %}
