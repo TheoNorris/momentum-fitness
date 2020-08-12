@@ -56,7 +56,7 @@
                 {% with product.has_sizes as s %}
                 {% if s %}
                 
-                    <select>
+                    <select name="product_variant" id="id_product_size">
                         <option value="xs">XS</option>
                         <option value="s">S</option>
                         <option value="m" selected>M</option>
@@ -69,17 +69,17 @@
                 {% with product.flavours as f %}
                 {% if f %}
                 
-                    <select>
+                    <select name="product_variant" id="id_product_flavour">
                         <option value="vanilla">Vanilla</option>
-                        <option value="chocolate">Chocolate</option>
-                        <option value="strawberry" selected>Strawberry</option>
+                        <option value="chocolate" selected>Chocolate</option>
+                        <option value="strawberry">Strawberry</option>
                         <option value="banana">Banana</option>
                         <option value="natural">Natural</option>
                     </select>
                
                 {% endif %}
                 {% endwith %}
-                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{product.id}}" id="id_qty_{{ product.id }}">
+                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
 
                 <div>
                 <a href="{% url 'products' %}" class="btn btn-primary">Keep Shopping</a>
