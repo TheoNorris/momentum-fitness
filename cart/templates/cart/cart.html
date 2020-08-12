@@ -38,9 +38,9 @@
             <hr />
             <p>{{ item.product.name }}</p>
             {% if item.product.has_sizes %}
-                <p>Size: <strong>{{ item.size|upper }}</strong></p>
+                <p>Size: <strong>{{ item.size_or_flavour|upper }}</strong></p>
             {% elif item.product.flavours %}
-                <p>Flavour: <strong>{{ item.size|title }}</strong></p>
+                <p>Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
             {% endif %}
           </div>
           <div class="col-lg-3">

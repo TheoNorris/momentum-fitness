@@ -11,12 +11,24 @@ def add_to_cart(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    size_or_flavour = None
+    if 'product_variant' in request.POST:
+        size_or_flavour = request.POST['product_variant']
     cart = request.session.get('cart', {})
 
-    if item_id in list(cart.keys()):
-        cart[item_id] += quantity
+    if size_or_flavour:
+        if item_id in list(cart.keys()):
+            if size_or_flavour in cart[item_id]['items_by_variant'].keys():
+                cart[item_id]['items_by_variant'][size_or_flavour] += quantity
+            else:
+                cart[item_id]['items_by_variant'][size_or_flavour] = quantity
+        else:
+            cart[item_id] = {'items_by_variant': {size_or_flavour: quantity}}
     else:
-        cart[item_id] = quantity
+        if item_id in list(cart.keys()):
+            cart[item_id] += quantity
+        else:
+            cart[item_id] = quantity
 
     request.session['cart'] = cart
     return redirect(redirect_url)
