@@ -32,10 +32,24 @@
     {% endif %}
   
   <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#"><h1 class="Head-title">Momentum</h1></a> <p class="title-p">Health and Fitness</p>
+  <a class="navbar-brand" href="{% url 'home_about' %}"><h1 class="Head-title">Momentum</h1></a> <p class="title-p">Health and Fitness</p>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  {% if cart_items %}
+<a href="{% url 'view_cart' %}" class="shopping-bag-icon">
+    <div>
+        <i class="fas fa-shopping-cart shoppingbag-colour"></i>
+        <p class="shoppingbag-colour">
+            {% if  grand_total %}
+                €{{ grand_total | floatformat:2}}
+            {% else %}
+                €0.00
+            {% endif %}
+        </p>
+    </div>
+</a>
+{% endif %}
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -78,20 +92,7 @@
  {% block imagetop %}{% endblock %}
   <div class="header-and-select-div">
 {% block title %}{% endblock %}
-{% if cart_items %}
-<a href="{% url 'view_cart' %}" class="shopping-bag-icon">
-    <div>
-        <i class="fas fa-shopping-cart shoppingbag-colour"></i>
-        <p class="shoppingbag-colour">
-            {% if  grand_total %}
-                €{{ grand_total | floatformat:2}}
-            {% else %}
-                €0.00
-            {% endif %}
-        </p>
-    </div>
-</a>
-{% endif %}
+
 </div>
 <hr>
 
