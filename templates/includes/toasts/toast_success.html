@@ -1,13 +1,46 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
   <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
-    <strong class="mr-auto">Bootstrap</strong>
-    <small>Success</small>
+    <strong class="mr-auto">Success</strong>
+    <small>Close</small>
     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="toast-body">
+    <div class="row">
+    <div class="col">
     {{ message}}
+    <hr>
+    </div>
+    {% if grand_total %}
+        <p>Cart items: {{ product_count }}</p>
+        <div class="cart-notification-div">
+        {% for item in cart_items %}
+            <div class="row cart-information-row">
+            <div class="col-3">
+            <img src="{{ item.product.image.url }}" class="rounded mr-2 cart-image" alt="{{ item.product.name }}">
+            </div>
+            <div class="col-9">
+            <p><strong>{{ item.product.name }}</strong></p>
+            <p>{% if item.product.has_sizes %}Size: {{ item.size_or_flavour|upper }}
+            {% elif item.product.flavours %}Flavour: {{ item.size_or_flavour|title }}{% endif %}</p>
+            <p><strong>Qty: {{ item.quantity }}</strong></p>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="">
+<h5 class="toast-h">Cart Total: €{{ total|floatformat:2 }}</h5>
+<h5 class="toast-h">Delivery: €{{ total|floatformat:2 }}</h5>
+<h5 class="toast-h">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+{% if free_delivery_delta > 0 %}
+<p>
+    You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
+</p>
+{% endif %}
+<a href="" class="btn btn-primary">Secure Checkout</a>
+</div>
+    {% endif %}
+    </div>
   </div>
 </div>

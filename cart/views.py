@@ -73,7 +73,7 @@ def edit_cart(request, item_id):
                 {cart[item_id]}')
         else:
             cart.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your bag')
+            messages.info(request, f'Removed {product.name} from your bag')
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
@@ -95,6 +95,6 @@ def remove_from_cart(request, item_id):
     else:
         cart.pop(item_id)
 
-    messages.success(request, f'Removed {product.name} from your cart')
+    messages.info(request, f'Removed {product.name} from your cart')
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
