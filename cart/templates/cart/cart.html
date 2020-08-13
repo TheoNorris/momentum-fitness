@@ -1,14 +1,13 @@
-{% extends "base.html" %} {% block title %}
+{% extends "base.html" %}{% load cart_tools %} {% block title %}
 <h1 class="page-header">Shopping Cart</h1>
 {% endblock %} {% block content %}
 <div class="container-fluid outter-cart-container">
 {% for item in cart_items %}
 <div class="row">
   <div class="overlay cart-overlay">
-    {% if cart_items %}
     <div class="product-cart-container">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           {% if item.product.image %}
           <div class="product-image-div">
             <a href="{{ item.product.image.url }}" target="_blank">
@@ -31,7 +30,7 @@
           </div>
           {% endif %}
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-4">
             <h5>Product Name</h5>
@@ -43,20 +42,51 @@
                 <p>Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
             {% endif %}
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-2">
             <h5>Price</h5>
             <hr />
             <p>€ {{ item.product.price }}</p>
           </div>
-          <div class="col-lg-2">
-            <h5>Qty.</h5>
-            <hr />
-            <p>{{ item.quantity }}</p>
-          </div>
           <div class="col-lg-3">
+            <h5>Qty.</h5>
+            <hr/>
+            <form class="update-form" method="POST" action="{% url 'edit_cart' item.item_id %}">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+           <div>
+            <a href="#" class="interactive-buttons" data-toggle="modal" data-target="#modal2">Remove</a>
+            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Remove Discussion</h5>
+                        <button type="button" class="close-button close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body-remove">
+                        Are you sure you want to remove these items?
+                    </div>
+                    
+                        <div class="modal-footer buttons">
+                            <button type="button" class="btn no-button-modal" data-dismiss="modal">Close</button>
+                            <a href="{% url 'remove_from_cart' item.item_id %}" class="btn yes-button-modal text-danger">Remove</a>
+                        </div>
+                 
+                </div>
+            </div>
+        </div>
+            <input type="submit" class="text-info" value="Update">
+            </div>
+            {% if item.product.has_sizes or item.product.flavours %}
+                <input type="hidden" name="product_variable" value="{{ item.size_or_flavour }}">
+            {% endif %}
+            </form>
+          </div>
+          <div class="col-lg-2">
             <h5>Subtotal</h5>
             <hr />
-            <p>€{{ item.product.price }}</p>
+            <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
           </div>
         </div>
         </div>
@@ -64,11 +94,8 @@
     </div>
   </div>
 </div>
-{% else %}
-    <h2>Your cart is empty!</h2>
-    <a href="{% url 'products' %}" class="btn btn-outline-info">Products</a>
-    {% endif %}
 {% endfor %}
+{% if cart_items %}
 <div class="cart-total-div">
 <h5>Cart Total: €{{ total|floatformat:2 }}</h5>
 <h5>Delivery: €{{ total|floatformat:2 }}</h5>
@@ -80,7 +107,23 @@
 {% endif %}
 <a href="" class="btn btn-primary">Keep Shopping</a>
 <a href="" class="btn btn-primary">Secure Checkout</a>
+</div>
+</div>
+{% else %}
+    <h2>Your cart is empty!</h2>
+    <a href="{% url 'products' %}" class="btn btn-outline-info">Products</a>
+{% endif %}
 
-</div>
-</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script>
+    // Javascript taken from stack overflow to enable modal form submission
+    function form_submit() {
+    document.getElementById("delete_form").submit();
+    }
+</script>
+
 {% endblock %}
