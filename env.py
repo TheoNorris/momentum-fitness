@@ -1,6 +1,0 @@
-import os
-
-os.environ["SOCIAL_AUTH_FACEBOOK_KEY"] = '377135533267083'
-os.environ["SOCIAL_AUTH_FACEBOOK_KEY"] = '24298a552f95b8bbac407818771201ad'
-
-dfafegaf
