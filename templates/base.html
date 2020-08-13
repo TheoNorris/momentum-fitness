@@ -26,10 +26,6 @@
   <body>
 
   <header>
-
-   {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
   
   <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="{% url 'home_about' %}"><h1 class="Head-title">Momentum</h1></a> <p class="title-p">Health and Fitness</p>
@@ -99,8 +95,28 @@
     {% block content %}
     {% endblock %}
   </div>
+  {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
     {% endblock %}
   
   </body>
