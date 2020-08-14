@@ -73,14 +73,14 @@ def edit_cart(request, item_id):
                 {cart[item_id]}')
         else:
             cart.pop(item_id)
-            messages.info(request, f'Removed {product.name} from your bag')
+            messages.info(request, f'Removed {product.name} from your cart')
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, item_id):
-    """"Remove the item from the shopping bag"""
+    """"Remove the item from the shopping cart"""
 
     product = get_object_or_404(Product, pk=item_id)
     size_or_flavour = None
