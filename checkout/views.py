@@ -6,7 +6,7 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
-
+from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from cart.contexts import cart_contents
 
@@ -14,6 +14,7 @@ import stripe
 import json
 
 # Create your views here.
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -68,7 +69,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size_or_flavour, quantity in item_data['items_by_variant'].items():
+                        for size_or_flavour, quantity in \
+                            item_data['items_by_variant'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -78,14 +80,16 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
+                        "One of the products in your cart\
+                             wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return \
+                redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -103,6 +107,8 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
+
+        print(intent)
 
         if request.user.is_authenticated:
             try:
