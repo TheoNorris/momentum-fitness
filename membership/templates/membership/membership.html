@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<h1 class="page-header">Become a Member now!</h1>
+{% endblock %}
+
+{% block content %}
+<div class="overlay">
+        <div class="container product-detail-container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="">
+                        <img class="membership-detail-image" src="{% static 'images/dumbells.jpg' %}" alt="Dumbells">
+                    </div>
+                </div>
+            <div class="col-lg-8">
+            <h4>Bronze Membership</h4>
+            <p>A  bronze membership contains 24 hour access to our award winning gyms. You will have access to all of our state of the art equipment.
+            On top of this you will be able to join any of our weekday classes which vary with location! <strong>Only €19.99 a month!</strong></p>
+            
+                <form action="#" method="POST">
+                {% csrf_token %}
+                <div>
+                <input type="submit" class="btn btn-primary" value="Join Now!">
+                </div>
+                </form>
+           
+               </div>
+            </div>
+        </div>
+</div>
+
+<div class="overlay">
+        <div class="container product-detail-container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="">
+                        <img class="membership-detail-image" src="{% static 'images/gym-class.jpg' %}" alt="Gym Class">
+                    </div>
+                </div>
+            <div class="col-lg-8">
+            <h4>Silver Membership</h4>
+            <p>A silver membership contains 24 hour access to our award winning gyms. You will have access to all of our state of the art equiptment.
+            You will be able to join any of our classes any day of the week, plus you will be able to bring a friend twice a month <strong>Only €29.99 a month!</strong></p>
+            
+                <form action="#" method="POST">
+                {% csrf_token %}
+                <div>
+                <input type="submit" class="btn btn-primary" value="Join Now!">
+                </div>
+                </form>
+           
+               </div>
+            </div>
+        </div>
+</div>
+
+<div class="overlay">
+        <div class="container product-detail-container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="">
+                        <img class="membership-detail-image" src="{% static 'images/towels.jpg' %}" alt="Towels">
+                    </div>
+                </div>
+            <div class="col-lg-8">
+            <h4>Gold Membership</h4>
+            <p>A gold membership contains 24 hour access to our award winning gyms. You will have access to all of our state of the art equiptment.
+            On top of this you will be able to join any of our classes which vary with location! You will have access to our luxurious spa's, plus you
+            will be able to bring a friend 2 times in a month.
+            <strong>Only €39.99 a month!</strong></p>
+            
+                <form action="#" method="POST">
+                {% csrf_token %}
+                <div>
+                <input type="submit" class="btn btn-primary" value="Join Now!">
+                </div>
+                </form>
+           
+               </div>
+            </div>
+        </div>
+</div>
+
+<div class="overlay">
+        <div class="container product-detail-container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="">
+                        <img class="membership-detail-image" src="{% static 'images/personal-trainer.jpg' %}" alt="Personal Trainer">
+                    </div>
+                </div>
+            <div class="col-lg-8">
+            <h4>Platinum Membership</h4>
+            <p>A platinum membership contains 24 hour access to our award winning gym. You will have access to all of our state of the art equiptment.
+            On top of this you will be able to join any of our classes which vary with location. You will have access to our luxurious spa's, Have your 
+            own personal trainer once a week, Plus you can bring a friend anytime you need company! <strong>Only €89.99 a month!</strong></p>
+            
+                <form action="#" method="POST">
+                {% csrf_token %}
+                <div>
+                <input type="submit" class="btn btn-primary" value="Join Now!">
+                </div>
+                </form>
+           
+               </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

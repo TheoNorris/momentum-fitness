@@ -27,6 +27,11 @@ a {
     text-decoration: none;
 }
 
+.col-lg-4{
+    padding: 0;
+    border-radius: 10px; 
+}
+
 .navbar-light .navbar-toggler{
     position: absolute;
     right: 3%;
@@ -352,4 +357,10 @@ background-color: rgba(255, 255, 255, .8);
 
 .toast-h{
     font-size: 15px;
+}
+
+.membership-detail-image{
+
+    width: 100%;
+    border-radius: 10px;
 }

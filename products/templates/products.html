@@ -24,11 +24,11 @@
         {{ products|length }} Products{% if search %} found for <strong>"{{ search }}"</strong>{% endif %}
         </p>
     </div>
-</div>
 <div class="overlay">
     <div class="row products-row">
         <div class="product-div">
             {% for product in products %}
+            {% if not product.category.name == 'Membership' %}
             <div class="card-div col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     {% if product.image %}
@@ -72,11 +72,13 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
 {% endblock %}
+
 
 {% block postloadjs %}
     {{ block.super }}
