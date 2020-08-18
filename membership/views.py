@@ -3,10 +3,10 @@ from products.models import Product
 
 
 def membership(request):
-    products = Product.objects.filter(category='Membership')
+    products = Product.objects.filter(category__name='Membership')
 
     context = {
         'products': products,
     }
     """A view to return the membership page"""
-    return render(request, context, 'membership/membership.html')
+    return render(request, 'membership/membership.html',  context)

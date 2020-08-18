@@ -48,7 +48,12 @@
             <p>€ {{ item.product.price }}</p>
           </div>
           <div class="col-lg-3">
+          {% if item.category.name == 'Membership' %}
+            <h5>Months</h5>
+          {% else %}
             <h5>Qty.</h5>
+          {% endif %}     
+
             <hr/>
             <form class="update-form" method="POST" action="{% url 'edit_cart' item.item_id %}">
             {% csrf_token %}
