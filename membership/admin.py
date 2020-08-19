@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import MembersPage
+from .models import Article
 
 
-class MembersPageadmin(admin.ModelAdmin):
+class Articleadmin(admin.ModelAdmin):
 
     list_display = (
         'date_published',
@@ -13,4 +13,4 @@ class MembersPageadmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(MembersPage, MembersPageadmin)
+admin.site.register(Article, Articleadmin)

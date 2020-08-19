@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<h1 class="page-header">Members Tips and Tricks</h1>
+{% endblock %}
+{% block content %}
+<!--Blog articles dependent on users choice-->
+<div class="blog-div">
+    <img class="blog-image" src="{{ article.image.url }}" alt="Dog" />
+    <h2 class="blog-title">{{ article.headline }}</h2>
+    <p class="article-text">{{ article.article }}</p>
+</div>
+{% endblock %}

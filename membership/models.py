@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class MembersPage(models.Model):
+class Article(models.Model):
 
     date_published = models.CharField(max_length=100)
     headline = models.CharField(max_length=100)
