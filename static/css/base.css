@@ -32,6 +32,13 @@ a {
     border-radius: 10px; 
 }
 
+.shopping-bag-icon{
+    text-align: center;
+    position: absolute;
+    right: 10%;
+    top: 25px;
+}
+
 .navbar-light .navbar-toggler{
     position: absolute;
     right: 3%;
@@ -216,6 +223,8 @@ nav.bg-light{
 
 .home-about-image{
     width: 100%;
+    border-radius: 10px;
+}
 }
 
 .shopping-bag-icon{

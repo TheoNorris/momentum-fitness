@@ -48,10 +48,10 @@
             <p>€ {{ item.product.price }}</p>
           </div>
           <div class="col-lg-3">
-          {% if item.category.name == 'Membership' %}
-            <h5>Months</h5>
+          {% if item.product.category.name == 'Membership' %}
+            <h5>Months:</h5>
           {% else %}
-            <h5>Qty.</h5>
+            <h5>Qty:</h5>
           {% endif %}     
 
             <hr/>

@@ -35,11 +35,13 @@ def add_to_cart(request, item_id):
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
-            messages.success(request, f'Updated {product.name} quantity \
-                {cart[item_id]}')
+            if not product.category.name == 'Membership':
+                messages.success(request, f'Updated {product.name} quantity \
+                    {cart[item_id]}')
         else:
             cart[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your cart')
+            if not product.category.name == 'Membership':
+                messages.success(request, f'Added {product.name} to your cart')
 
     request.session['cart'] = cart
 

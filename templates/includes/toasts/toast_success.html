@@ -9,7 +9,7 @@
   <div class="toast-body">
     <div class="row">
     <div class="col">
-    {{ message}}
+    {{ message }}
     <hr>
     </div>
     {% if grand_total %}
@@ -24,7 +24,7 @@
             <p><strong>{{ item.product.name }}</strong></p>
             <p>{% if item.product.has_sizes %}Size: {{ item.size_or_flavour|upper }}
             {% elif item.product.flavours %}Flavour: {{ item.size_or_flavour|title }}{% endif %}</p>
-            <p><strong>Qty: {{ item.quantity }}</strong></p>
+            <p><strong>{% if item.product.category.name == 'Membership' %}Months: {% else %}Qty: {% endif %}{{ item.quantity }}</strong></p>
             </div>
             </div>
         {% endfor %}
