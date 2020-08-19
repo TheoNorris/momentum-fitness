@@ -373,3 +373,22 @@ background-color: rgba(255, 255, 255, .8);
     width: 100%;
     border-radius: 10px;
 }
+
+.blog-div {
+  text-align: center;
+  margin: 30px 20px;
+  padding: 20px;
+  border: solid rgba(108, 206, 84, 0.5) 2px;
+}
+
+.blog-image {
+  width: 90%;
+}
+
+.blog-title {
+  margin: 15px 30px 5px;
+  letter-spacing: 1px;
+  font-size: 30px;
+  color: rgba(255, 59, 59, 0.911);
+  font-weight: 900;
+}

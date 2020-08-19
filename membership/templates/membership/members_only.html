@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<h1 class="page-header">Products</h1>
+{% endblock %}
+
+{% block content %}
+<a href="{{url_for('goodboy')}}">
+    <div class="blog-div">
+        <img class="blog-image" src="{{url_for('static', filename='images/man-training-a-rottweiler.jpg')}}" alt="Rottweiler" />
+        <h2 class="blog-title">How to turn a bad pooch into a good boy.</h2>
+        <h4 class="author-blog">By Bella Johnson</h4>
+    </div>
+</a>
+{% endblock %}
