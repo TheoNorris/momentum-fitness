@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Article(models.Model):
@@ -16,7 +15,6 @@ class Article(models.Model):
 
 class HealthQuestions(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     how_often = models.CharField(max_length=100)
     what_times = models.CharField(max_length=100)
     favourite_way = models.CharField(max_length=100)
