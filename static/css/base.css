@@ -54,6 +54,21 @@ nav.bg-light{
     opacity: 0.8;
 }
 
+#footer{
+    height: 100px;
+    background-color: #f8f9fa;
+    opacity: 0.8;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.copyright-text {
+  color: rgba(104, 104, 104, 0.911);
+  font-size: 70%;
+  letter-spacing: 1px;
+  padding: 0 15px;
+}
+
 .Head-title{
     font-family: 'Red Rose', sans-serif;
     font-weight: 300;
@@ -435,4 +450,20 @@ background-color: rgba(255, 255, 255, .8);
 .entry-page-p{
     margin: 10px;
 }
+}
+
+@media (max-width: 1369px){
+.map-outer-div{
+margin-top: 30px;
+}
+
+.shopping-bag-icon {
+    right: 12%;
+    top: 25px;
+}
+
+.title-p {
+    font-size: 15px;
+}
+
 }

@@ -18,7 +18,6 @@ def membership(request):
     return render(request, 'membership/membership.html',  context)
 
 
-@login_required
 def health_form(request):
     """A view to return the health form"""
 

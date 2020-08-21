@@ -15,7 +15,6 @@ class HealthQuestionsForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
 
-            'user': 'user',
             'how_often': 'How often do you train a week',
             'what_times': 'What times do you usually workout?',
             'favourite_way': "What's your favourite way of training?",
