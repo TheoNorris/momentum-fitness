@@ -56,7 +56,7 @@
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.product_variant|upper }}{% if item.product.flavours %}{{ item.product_variant|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small">{% if item.product.has_sizes %}Size: {{ item.size_or_flavour|upper }}{% elif item.product.flavours %}Flavour: {{ item.size_or_flavour|upper }}{% else %}N/A{% endif %}</p>
                             <p class="my-0 small text-muted">{% if item.product.category.name == 'Membership' %}Months: {% else %}Qty: {% endif %}{{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">

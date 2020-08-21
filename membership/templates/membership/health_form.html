@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<h1 class="page-header">Fitness Questionnaire</h1>
+{% endblock %}
+{% block content %}
+<!--Blog articles dependent on users choice-->
+<div class="health-form-container">
+                <p class="text-muted">Please take a minute to fill out this form to help us understand what you need most!</p>
+                <form class="mt-3" action="#" method="POST" id="health-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="">Submit</button>
+                </form>
+            </div>
+{% endblock %}

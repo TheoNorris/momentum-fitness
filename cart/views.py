@@ -11,6 +11,7 @@ def view_cart(request):
 
 def add_to_cart(request, item_id):
     """"Add a quantity of the specified product to the cart"""
+
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -22,8 +23,9 @@ def add_to_cart(request, item_id):
     if size_or_flavour:
         if item_id in list(cart.keys()):
             if size_or_flavour in cart[item_id]['items_by_variant'].keys():
-                messages.success(request, f'Updated {size_or_flavour.title()}{product.name} quantity \
-                to {cart[item_id]}[items_by_variant][size_or_flavour]')
+                cart[item_id]['items_by_variant'][size_or_flavour] += quantity
+                messages.success(request, f'Updated {size_or_flavour.title()} {product.name} quantity \
+                to {cart[item_id]["items_by_variant"][size_or_flavour]}')
             else:
                 cart[item_id]['items_by_variant'][size_or_flavour] = quantity
                 messages.success(request, f'Added {size_or_flavour.title()}\
@@ -62,7 +64,7 @@ def edit_cart(request, item_id):
         if quantity > 0:
             cart[item_id]['items_by_variant'][size_or_flavour] = quantity
             messages.success(request, f'Updated {size_or_flavour.title()}{product.name} quantity \
-                to {cart[item_id]}[items_by_variant][size_or_flavour]')
+                to {cart[item_id]["items_by_variant"][size_or_flavour]}')
         else:
             del cart[item_id]['items_by_variant'][size_or_flavour]
             if not cart[item_id]['items_by_variant']:
@@ -95,8 +97,11 @@ def remove_from_cart(request, item_id):
         del cart[item_id]['items_by_variant'][size_or_flavour]
         if not cart[item_id]['items_by_variant']:
             cart.pop(item_id)
+        messages.success(request, f'Removed {size_or_flavour.title()}\
+             {product.name} from your cart')
     else:
         cart.pop(item_id)
+        messages.success(request, f'Removed {product.name} from your cart')
 
     messages.info(request, f'Removed {product.name} from your cart')
     request.session['cart'] = cart

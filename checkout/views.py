@@ -70,7 +70,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size_or_flavour, quantity in item_data['items_by_variant'].items():
+                        for size_or_flavour, quantity in \
+                                item_data['items_by_variant'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -89,14 +90,16 @@ def checkout(request):
 
             request.session['save_info'] = 'save-info' in request.POST
             return \
-                redirect(reverse('checkout_success', args=[order.order_number]))
+                redirect(reverse('checkout_success',
+                         args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(request, "There's nothing in your cart at\
+                 the moment")
             return redirect(reverse('products'))
 
         current_cart = cart_contents(request)
@@ -147,7 +150,6 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    order_line_item = OrderLineItem
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
