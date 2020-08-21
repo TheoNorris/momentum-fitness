@@ -1,0 +1,1 @@
+web: gunicorn momentum_fitness.wsgi:application
