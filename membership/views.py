@@ -34,7 +34,7 @@ def health_form(request):
 
     form = HealthQuestionsForm(instance=health)
 
-    template = 'membership/health_form.html'
+
 
     context = {
 

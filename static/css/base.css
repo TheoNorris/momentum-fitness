@@ -16,7 +16,7 @@ p{
 }
 
 body {
-    background: url('/media/swimmer.jpg') rgb(21 77 82 / 80%);
+    background: url('/static/images/swimmer.jpg') rgb(21 77 82 / 80%);
     background-repeat: repeat-y;
     background-size:cover;
     background-blend-mode: multiply;
