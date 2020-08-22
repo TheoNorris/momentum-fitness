@@ -19,7 +19,7 @@
     <div>
         <p class="search-quantity-p">
         {% if search or search_categories or surrent_sort != 'None_None' %}
-            <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+            <span class="small"><a class="products-count-a" href="{% url 'products' %}">Products Home</a> | </span>
         {% endif %}
         {{ products|length }} Products{% if search %} found for <strong>"{{ search }}"</strong>{% endif %}
         </p>
@@ -50,25 +50,24 @@
                             <p class="card-text">€{{ product.price }}</p>
                                 {% if product.category.name == 'Supplements' %}
                                     <a href="{% url 'products' %}?category={{ product.category.name }}">
-                                        <p><i class="fas fa-leaf"></i>   {{ product.category.name }}</p>
+                                        <p class="category-p"><i class="fas fa-leaf category-symbol"></i>   {{ product.category.name }}</p>
                                     </a>
                                 {% elif product.category.name == 'Clothing' %}
                                     <a href="{% url 'products' %}?category={{ product.category.name }}">
-                                        <p><i class="fas fa-tshirt"></i>   {{ product.category.name }}</p>
+                                        <p class="category-p"><i class="fas fa-tshirt category-symbol"></i>   {{ product.category.name }}</p>
                                     </a>
                                 {% elif product.category.name == 'Equipment' %}
                                     <a href="{% url 'products' %}?category={{ product.category.name }}">
-                                        <p><i class="fas fa-dumbbell"></i>   {{ product.category.name }}</p>
+                                        <p class="category-p"><i class="fas fa-dumbbell category-symbol"></i>   {{ product.category.name }}</p>
                                     </a>
                                 {% else %}
                                     <a href="{% url 'products' %}?category={{ product.category.name }}">
-                                        <p><i class="fas fa-allergies"></i>   {{ product.category.name }}</p>
+                                        <p class="category-p"><i class="fas fa-allergies category-symbol"></i>   {{ product.category.name }}</p>
                                     </a>
                                 
                                 {% endif %}
-                            <p class="card-text"><i class="far fa-star"></i>  {{ product.rating }}/5</p>
+                            <p class="card-text"><i class="far fa-star rating-symbol"></i>  {{ product.rating }}/5</p>
                     </a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>

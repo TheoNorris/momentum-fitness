@@ -21,7 +21,7 @@ def membership(request):
 def health_form(request):
     """A view to return the health form"""
 
-    health = get_object_or_404(HealthQuestions, user=request.user)
+    health = get_object_or_404(HealthQuestions)
 
     if request.method == 'POST':
         form = HealthQuestionsForm(request.POST, instance=health)
