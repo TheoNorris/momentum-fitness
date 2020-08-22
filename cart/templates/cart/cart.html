@@ -7,7 +7,7 @@
   <div class="overlay cart-overlay">
     <div class="product-cart-container">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-3">
           {% if item.product.image %}
           <div class="product-cart-image-div">
             <a href="{{ item.product.image.url }}" target="_blank">
@@ -30,9 +30,9 @@
           </div>
           {% endif %}
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-md-9">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-md-4">
             <h5 class="cart-table-headers">Product Name</h5>
             <hr />
             <p class="cart-details-p">{{ item.product.name }}</p>
@@ -42,12 +42,12 @@
                 <p class="cart-details-p">Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
             {% endif %}
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-2 col-md-2">
             <h5 class="cart-table-headers">Price</h5>
             <hr />
             <p class="cart-details-p">€ {{ item.product.price }}</p>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-md-3">
           {% if item.product.category.name == 'Membership' %}
             <h5 class="cart-table-headers">Months:</h5>
           {% else %}
@@ -67,10 +67,10 @@
             {% endif %}
             </form>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-2 col-md-2">
             <h5 class="cart-table-headers">Subtotal</h5>
             <hr />
-            <p class="cart-details-p">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+            <p class="cart-details-p product-cart-price">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
           </div>
         </div>
         </div>
@@ -81,15 +81,15 @@
 {% endfor %}
 {% if cart_items %}
 <div class="cart-total-div">
-<h5 class="cart-total-div">Cart Total: €{{ total|floatformat:2 }}</h5>
-<h5 class="cart-total-div">Delivery: €{{ delivery|floatformat:2 }}</h5>
-<h5 class="cart-total-div">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+<h5 class="cart-total-sum">Cart Total: €{{ total|floatformat:2 }}</h5>
+<h5 class="cart-total-sum">Delivery: €{{ delivery|floatformat:2 }}</h5>
+<h5 class="cart-total-sum">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
 {% if free_delivery_delta > 0 %}
 <p>
     You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
 </p>
 {% endif %}
-<a href="{% url 'products' %}" class="btn buttons">Keep Shopping</a>
+<a href="{% url 'products' %}" class="btn buttons keep-shopping-button">Keep Shopping</a>
 <a href="{% url 'checkout' %}" class="btn buttons">Secure Checkout</a>
 </div>
 </div>

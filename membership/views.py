@@ -1,10 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from products.models import Product
-from .models import Article, HealthQuestions
-from .forms import HealthQuestionsForm
+from .models import Article
 
 
 def membership(request):
@@ -16,32 +14,6 @@ def membership(request):
     }
 
     return render(request, 'membership/membership.html',  context)
-
-
-def health_form(request):
-    """A view to return the health form"""
-
-    health = get_object_or_404(HealthQuestions)
-
-    if request.method == 'POST':
-        form = HealthQuestionsForm(request.POST, instance=health)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Thank you for your time!')
-            return render(request, 'checkout/checkout.html')
-        else:
-            messages.error(request, 'Form is invalid, please try again')
-
-    form = HealthQuestionsForm(instance=health)
-
-
-
-    context = {
-
-        'form': form,
-    }
-
-    return render(request, template, context)
 
 
 @login_required

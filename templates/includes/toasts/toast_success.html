@@ -38,7 +38,7 @@
     You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
 </p>
 {% endif %}
-<a href="" class="btn buttons">Secure Checkout</a>
+<a href="{% url 'view_cart' %}" class="btn buttons cart-button">Secure Checkout</a>
 </div>
     {% endif %}
     </div>
