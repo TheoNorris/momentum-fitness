@@ -56,6 +56,7 @@ nav.bg-light{
 
 #footer{
     height: 100px;
+    width: 100%;
     background-color: #f8f9fa;
     opacity: 0.8;
     margin-top: 20px;
@@ -268,7 +269,6 @@ nav.bg-light{
     width: 100%;
     border-radius: 10px;
 }
-}
 
 .shopping-bag-icon{
     text-align: center;
@@ -344,9 +344,15 @@ hr{
 background-color: rgba(255, 255, 255, .8);
 }
 
+.overlay.product-detail-overlay{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
 .product-detail-container{
     background-color: rgba(255, 255, 255, .7);
     text-align: center;
+    border-radius: 10px;
 }
 
 .product-image-div{
@@ -358,6 +364,24 @@ background-color: rgba(255, 255, 255, .8);
     border-radius: 10px;
 }
 
+.product-detail-name{
+    margin-top: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+
+.description-detail{
+    line-height: 25px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+.p-detail{
+    margin-top: 20px;
+    letter-spacing: .5px;
+}
+
 .card-title{
     min-height: 50px;
     letter-spacing: 1px;
@@ -366,11 +390,52 @@ background-color: rgba(255, 255, 255, .8);
 
 .card-text{
     letter-spacing: 1px;
-    margin: 5px 0;
 }
 
 .card-body{
     padding: 0.50rem;
+}
+
+.category-rating-div{
+    display: inline-flex;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+.detail-card-text{
+margin-left: 15px;
+}
+
+.price-detail-text{
+    margin: 5px;
+    letter-spacing: 1px;
+}
+
+.flavour-quantity-div{
+    margin: 10px 0;
+}
+
+.flavour-quantity{
+    height: 25px;
+    letter-spacing: 1px;
+}
+
+.product-image-detail-div{
+    border-radius: 10px 0 0 10px;
+    background-color: white;
+}
+
+.button-div{
+    margin: 20px;
+}
+
+.buttons{
+    background-color: #46a9ff;
+    color: white;
+    border: #383838;
+    margin-right: 10px;
+    border-radius: 10px;
+    letter-spacing: 1px;
 }
 
 .category-p{
@@ -404,11 +469,22 @@ background-color: rgba(255, 255, 255, .8);
     width: 1000px;
     background-color: rgba(255, 255, 255, .7);
     text-align: center;
+    border-radius: 10px;
+}
+
+.product-cart-image-div{
+
+    border-radius: 10px 0 0 10px;
 }
 
 .cart-overlay{
     margin: 0 auto 20px;
     
+}
+
+.cart-table-headers{
+    margin-top: 10px;
+    letter-spacing: 1px;
 }
 
 .cart-total-div{
@@ -435,6 +511,7 @@ background-color: rgba(255, 255, 255, .8);
     height: 100px;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .cart-image{
@@ -445,12 +522,47 @@ background-color: rgba(255, 255, 255, .8);
     text-align: center;
 }
 
-.toast-body{
-    padding: 25px;
+.empty-cart-h2{
+    color: white;
+    margin: 10% 0 30px;
+    letter-spacing: 1px;
+    font-weight: unset;
 }
 
-.toast-h{
-    font-size: 15px;
+.empty-cart-cart{
+    color: white;
+}
+
+.cart-details-p{
+    margin-top: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.cart-quantity-counter{
+    margin-top: 10px;
+}
+
+.remove-update-cart-item{
+    margin-top: 10px;
+}
+
+.update-button-cart{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #0085fa!important;
+}
+
+.update-button-cart:hover{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #0055a0!important;
+}
+
+.remove-button-cart{
+ color: #0085fa;
+ margin-right: 5px;
 }
 
 .membership-detail-image{
@@ -476,6 +588,46 @@ background-color: rgba(255, 255, 255, .8);
   font-size: 30px;
   color: rgba(255, 59, 59, 0.911);
   font-weight: 900;
+}
+
+.toast-success{
+    background-color: #89ca79;
+    letter-spacing: 1px;
+}
+
+.toast-warning{
+background-color: #cc6d6d;
+letter-spacing: 1px;
+}
+
+.toast-info{
+ background-color: #6db6cc;
+}
+
+.toast-body-success{
+    padding: 5px 25px 20px;
+    letter-spacing: 0.5px;
+    background-color: rgb(153 193 199 / 80%);
+}
+
+.toast-body{
+    padding: 15px 25px 20px;
+    letter-spacing: 0.5px;
+    background-color: rgb(153 193 199 / 80%);
+}
+
+.toast-h{
+    font-size: 15px;
+}
+
+.toast-message{
+    padding-left: 0;
+}
+
+.delivery-info-toast{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
 }
 
 @media (max-width: 1369px){
@@ -540,6 +692,11 @@ h5.card-title {
 
 div.card{
     min-height: 400px;
+}
+
+.product-image-detail-div{
+    border-radius: 10px 10px 0 0;
+    background-color: white;
 }
 }
 
@@ -649,6 +806,27 @@ hr{
     margin-top: 30px;
 }
 
+.product-detail-overlay{
+    margin: 0 10px;
+}
+
+.buttons{
+    margin-bottom: 10px;
+}
+
+h1.entry-page-header{
+    font-size: 45px;
+    margin-bottom: 0;
+    line-height: 30px;
+}
+
+.nav-links-div{
+    padding-left: 10px;
+}
+
+.home-about-div{
+    margin-top: 5px;
+}
 }
 
 @media (max-width: 321px){

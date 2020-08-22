@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-lg-3">
           {% if item.product.image %}
-          <div class="product-image-div">
+          <div class="product-cart-image-div">
             <a href="{{ item.product.image.url }}" target="_blank">
               <img
                 class="product-cart-image"
@@ -33,55 +33,34 @@
         <div class="col-lg-9">
         <div class="row">
           <div class="col-lg-4">
-            <h5>Product Name</h5>
+            <h5 class="cart-table-headers">Product Name</h5>
             <hr />
-            <p>{{ item.product.name }}</p>
+            <p class="cart-details-p">{{ item.product.name }}</p>
             {% if item.product.has_sizes %}
-                <p>Size: <strong>{{ item.size_or_flavour|upper }}</strong></p>
+                <p class="cart-details-p">Size: <strong>{{ item.size_or_flavour|upper }}</strong></p>
             {% elif item.product.flavours %}
-                <p>Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
+                <p class="cart-details-p">Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
             {% endif %}
           </div>
           <div class="col-lg-2">
-            <h5>Price</h5>
+            <h5 class="cart-table-headers">Price</h5>
             <hr />
-            <p>€ {{ item.product.price }}</p>
+            <p class="cart-details-p">€ {{ item.product.price }}</p>
           </div>
           <div class="col-lg-3">
           {% if item.product.category.name == 'Membership' %}
-            <h5>Months:</h5>
+            <h5 class="cart-table-headers">Months:</h5>
           {% else %}
-            <h5>Qty:</h5>
+            <h5 class="cart-table-headers">Qty:</h5>
           {% endif %}     
 
             <hr/>
             <form class="update-form" method="POST" action="{% url 'edit_cart' item.item_id %}">
             {% csrf_token %}
-            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-           <div>
-            <a href="#" class="interactive-buttons" data-toggle="modal" data-target="#modal2">Remove</a>
-            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Product</h5>
-                        <button type="button" class="close-button close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body-remove">
-                        Are you sure you want to remove these items?
-                    </div>
-                    
-                        <div class="modal-footer buttons">
-                            <button type="button" class="btn no-button-modal" data-dismiss="modal">Close</button>
-                            <a href="{% url 'remove_from_cart' item.item_id %}" class="btn yes-button-modal text-danger">Remove</a>
-                        </div>
-                 
-                </div>
-            </div>
-         </div>
-            <input type="submit" class="text-info" value="Update">
+            <input class="cart-quantity-counter" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+           <div class="remove-update-cart-item">
+            <a class="remove-button-cart" href="{% url 'remove_from_cart' item.item_id %}" class="">Remove</a>
+            <input type="submit" class="text-info update-button-cart" value="Update">
             </div>
             {% if item.product.has_sizes or item.product.flavours %}
                 <input type="hidden" name="product_variable" value="{{ item.size_or_flavour }}">
@@ -89,9 +68,9 @@
             </form>
           </div>
           <div class="col-lg-2">
-            <h5>Subtotal</h5>
+            <h5 class="cart-table-headers">Subtotal</h5>
             <hr />
-            <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+            <p class="cart-details-p">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
           </div>
         </div>
         </div>
@@ -102,21 +81,21 @@
 {% endfor %}
 {% if cart_items %}
 <div class="cart-total-div">
-<h5>Cart Total: €{{ total|floatformat:2 }}</h5>
-<h5>Delivery: €{{ total|floatformat:2 }}</h5>
-<h5>Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+<h5 class="cart-total-div">Cart Total: €{{ total|floatformat:2 }}</h5>
+<h5 class="cart-total-div">Delivery: €{{ delivery|floatformat:2 }}</h5>
+<h5 class="cart-total-div">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
 {% if free_delivery_delta > 0 %}
 <p>
     You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
 </p>
 {% endif %}
-<a href="{% url 'products' %}" class="btn btn-primary">Keep Shopping</a>
-<a href="{% url 'checkout' %}" class="btn btn-primary">Secure Checkout</a>
+<a href="{% url 'products' %}" class="btn buttons">Keep Shopping</a>
+<a href="{% url 'checkout' %}" class="btn buttons">Secure Checkout</a>
 </div>
 </div>
 {% else %}
-    <h2>Your cart is empty!</h2>
-    <a href="{% url 'products' %}" class="btn btn-outline-info">Products</a>
+    <h2 class="empty-cart-h2">Your <i class="fas fa-shopping-cart empty-cart-cart"></i> is empty!</h2>
+    <a href="{% url 'products' %}" class="btn buttons">Products</a>
 {% endif %}
 
 {% endblock %}
