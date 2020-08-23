@@ -1,118 +1,138 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-        {% block extra_css %} {% endblock %}
+    {% block extra_css %}
+    {% endblock %}
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
-        <title>Momentum Health and Fitness</title>
-    </head>
+    <title>Momentum Health and Fitness</title>
+  </head>
 
-    <body>
-        <header>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="{% url 'home_about' %}"><h1 class="Head-title">Momentum</h1></a>
-                <p class="title-p">Health and Fitness</p>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                {% if cart_items %}
-                <a href="{% url 'view_cart' %}" class="shopping-bag-icon">
-                    <div>
-                        <i class="fas fa-shopping-cart shoppingbag-colour"></i>
-                        <p class="shoppingbag-colour">
-                            {% if grand_total %} €{{ grand_total | floatformat:2}} {% else %} €0.00 {% endif %}
-                        </p>
-                    </div>
-                </a>
-                {% endif %}
+  <body>
 
-                <div class="collapse navbar-collapse nav-links-div" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'home_about' %}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Our Products
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=Supplements">Supplements</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=Clothing">Clothing</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=Equipment">Equipment</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=Accessories">Accessories</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            {% if request.user.is_authenticated %}
-                            <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Members
-                            </a>
-                            {% else %}
-                            <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Login/SignUp
-                            </a>
-                            {% endif %}
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% if request.user.is_authenticated %}
-                                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-                                <a class="dropdown-item" href="{% url 'members_only' %}">Members Page</a>
-                                <a class="dropdown-item" hidden href="{% url 'account_login' %}">Login</a>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
-                                <a class="dropdown-item" hidden href="{% url 'account_signup' %}">Register</a>
-                                {% else %}
-                                <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
-                                <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'membership' %}">Join us!</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
-                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
-            <div class="gold-member-banner">
-                <div class="gold-overlay"></div>
-                <p class="gold-member-text"><a href="{% url 'membership' %}" class="gold-member-link">Join us</a> now and receive a gold membership for €39.99 a month!</p>
-            </div>
-        </header>
+  <header>
+  
+  <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'home_about' %}"><h1 class="Head-title">Momentum</h1></a> <p class="title-p">Health and Fitness</p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% if cart_items %}
+<a href="{% url 'view_cart' %}" class="shopping-bag-icon">
+    <div>
+        <i class="fas fa-shopping-cart shoppingbag-colour"></i>
+        <p class="shoppingbag-colour">
+            {% if  grand_total %}
+                €{{ grand_total | floatformat:2}}
+            {% else %}
+                €0.00
+            {% endif %}
+        </p>
+    </div>
+</a>
+{% endif %}
 
-        <div class="container-fluid base-container">
-            {% block imagetop %}{% endblock %}
-            <div class="header-and-select-div">
-                {% block title %}{% endblock %}
-            </div>
-            <hr />
 
-            {% block content %} {% endblock %}
+  <div class="collapse navbar-collapse nav-links-div" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home_about' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Our Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=Supplements">Supplements</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=Clothing">Clothing</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=Equipment">Equipment</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=Accessories">Accessories</a>
         </div>
-        {% if messages %}
-        <div class="message-container">
-            {% for message in messages %} {% with message.level as level %} {% if level == 40 %} {% include 'includes/toasts/toast_error.html' %} {% elif level == 30 %} {% include 'includes/toasts/toast_warning.html' %} {% elif level == 25
-            %} {% include 'includes/toasts/toast_success.html' %} {% else %} {% include 'includes/toasts/toast_info.html' %} {% endif %} {% endwith %} {% endfor %}
-        </div>
+      </li>
+      <li class="nav-item">
+        {% if request.user.is_authenticated %}
+        <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Members
+        </a>
+        {% else %}
+        <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Login/SignUp
+        </a>
         {% endif %}
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% if request.user.is_authenticated %}
+         <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+         <a class="dropdown-item" href="{% url 'members_only' %}">Members Page</a>
+          <a class="dropdown-item" hidden href="{% url 'account_login' %}">Login</a>
+          <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+          <a class="dropdown-item" hidden href="{% url 'account_signup' %}">Register</a>
+          {% else %}
+          <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+          <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+          {% endif %}
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'membership' %}">Join us!</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
+      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="gold-member-banner">
+<div class="gold-overlay"></div>
+<p class="gold-member-text"><a href="{% url 'membership' %}" class="gold-member-link">Join us</a> now and receive a gold membership for €39.99 a month!</p>
+</div>
+</header>
+
+  <div class="container-fluid base-container">
+ {% block imagetop %}{% endblock %}
+  <div class="header-and-select-div">
+{% block title %}{% endblock %}
+
+</div>
+<hr>
+
+    {% block content %}
+    {% endblock %}
+  </div>
+  {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
         <footer id="footer">
             <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram social-links"></i></a>
@@ -124,10 +144,12 @@
             </p>
         </footer>
 
-        {% block postloadjs %}
-        <script type="text/javascript">
-            $(".toast").toast("show");
-        </script>
-        {% endblock %}
-    </body>
+
+    {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+    {% endblock %}
+  
+  </body>
 </html>

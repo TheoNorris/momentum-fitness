@@ -750,7 +750,6 @@ letter-spacing: 1px;
 .membership-container{
     width: 95%;
     margin-bottom: 20px;
-    padding-bottom: 20px;
 }
 
 .signout-p{
@@ -780,6 +779,14 @@ letter-spacing: 1px;
 
 .reset-p{
     margin-bottom: 20px;
+}
+
+.form-check-label{
+    color:white;
+}
+
+a.login-or-create{
+    color: #007bff!important;
 }
 
 @media (max-width: 1369px){
@@ -878,6 +885,13 @@ div.card{
     width: 80%;
 }
 
+}
+
+@media (max-width: 903px){
+
+.keep-shopping-button{
+    margin-bottom: 10px;
+}
 }
 
 @media (max-width: 765px){

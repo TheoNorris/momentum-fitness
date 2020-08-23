@@ -6,7 +6,7 @@ from .models import Article
 
 
 def membership(request):
-    """A view to return the membership page"""
+    """A view to return the membership purchase page"""
     products = Product.objects.filter(category__name='Membership')
 
     context = {
@@ -31,7 +31,7 @@ def members_only(request):
 @login_required
 def members_articles(request, article_id):
 
-    """A view to return the members only page"""
+    """A view to return a members only page"""
     article = get_object_or_404(Article, pk=article_id)
 
     context = {
