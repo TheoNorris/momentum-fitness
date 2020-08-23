@@ -6,9 +6,6 @@ and also purchase information of the products. This website is a multi-faceted w
 
 ## UX
 
-This website will be created for lovers of dogs and all things furry. The site users will be individuals with a passion for pets, 
-dog owners looking for tips or advice or those who just want to brighten their day!
-
 This website is created for anyone that has ever been or ever wanted to get to the gym! The site users will be individuals that are 
 interested in healthy living with a passion for getting out and working for their goals.
 
@@ -64,20 +61,11 @@ My Database is divided into five sections.
 
 - The fourth contains all the orders that have been made via the website.
 
-![Schema Orders](/readme-files/readme-documents/orders-schema-thread.png)
+![Schema Orders](/readme-files/readme-documents/orders-schema.png)
 
-- Finally, the firfth contains all the users that have registered on the website.
+- Finally, the fifth contains all the users that have registered on the website.
 
 ![Schema Users](/readme-files/readme-documents/users-schema.png)
-
-## Existing Features
-
-- Social links to the company's social media.
-- A database of blogs and articles, accessible to the user on selection.
-- A discussions page where the user can start discussions, like, edit or delete discussions
-- A discussions thread where the user can comment on existing discussions. These comments can also be liked, edited or deleted.
-- A news page with collapsible articles.
-- A select bar where users can select from a category of discussions.
 
 ### Features left to implement
 
@@ -174,11 +162,9 @@ deadline and I was working on a very, very tight schedule!
 
 - As a user, I will be able to view the various products the website has in it's online shop.
 
-![Socials](/readme-files/readme-documents/socials.png)
+![Products](/readme-files/readme-documents/products.png)
 
 - As a user, I will be able to add any of these said products into a cart.
-
-![Products](/readme-files/readme-documents/products.png)
 
 - As a user, I will be able to access this cart and see what products I am about to purchase.
 
@@ -245,7 +231,7 @@ deadline and I was working on a very, very tight schedule!
 During this project I encountered various small problems, some I fixed and some were just not manageable in the short timeframe I had and
 will have to be fixed after the project
 
-- One of the biggest problems I encountered was hosting to Heroku. This is not usually a problem but I nor two other tutors could find this problem
+- One of the biggest problems I encountered was hosting to Heroku. This is not usually a problem but I nor two of my tutors could find this problem
 for several hours. Sadly, it turns out it was a mispelling in the wsgi file and wasted many very crucial last hours of this project.
 
 - For this reason I have some small bugs remaining.
@@ -257,6 +243,8 @@ for several hours. Sadly, it turns out it was a mispelling in the wsgi file and 
   then alter the quantity again it the cart somehow loses this detail. If I just had a little more time I'm sure I could solve this!
 
     - I also have a health form that I was planning to link in when a user bought a membership but I just have not had time. Even in this 26 hour last push.
+
+    - Using a python key in my javasript map meant it is only functioning in developer mode. I will fix this when I have more time. 
 
 ## Deployment
 
@@ -299,6 +287,8 @@ you need. I would highly recommend you store your environment variables in their
 - Now, inside Your Heroku dashboard in the top right of the window you can now open the the application.
 
 ![Open App](/readme-files/readme-documents/open-app.png)
+
+-You will also have to set up your own Amazon Web Services account to upload your static and media files into.
 
 **To run locally you can clone this repository directly into the editor of your choice by firstly,**
 
