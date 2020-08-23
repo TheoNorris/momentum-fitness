@@ -7,8 +7,9 @@
   color: #383838;
 }
 
-html {
+html, body {
     height: 100%;
+    width: 100%;
 }
 
 p{
@@ -61,6 +62,8 @@ nav.bg-light{
     opacity: 0.8;
     margin-top: 20px;
     text-align: center;
+    bottom: 0;
+    left: 0;
 }
 
 .social-links{
@@ -589,7 +592,10 @@ margin-left: 15px;
   text-align: center;
   margin: 30px 20px;
   padding: 20px;
-  border: solid rgba(108, 206, 84, 0.5) 2px;
+  background-color: rgb(153 193 199 / 80%);
+  border-radius: 10px;
+  min-width: 100%;
+  min-height: 90%
 }
 
 .blog-image {
@@ -598,10 +604,10 @@ margin-left: 15px;
 
 .blog-title {
   margin: 15px 30px 5px;
-  letter-spacing: 1px;
-  font-size: 30px;
-  color: rgba(255, 59, 59, 0.911);
-  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 20px;
+  color: #383838;
+  font-weight: 400;
 }
 
 .toast-success{
@@ -642,6 +648,134 @@ letter-spacing: 1px;
     width: 100%;
     text-align: center;
     margin-top: 15px;
+}
+
+.checkout-form-col{
+    background-color: rgb(153 193 199 / 80%);   
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+#payment-form .form-control, #card-element {
+    border-radius: 5px;
+    border: 0!important;
+}
+
+.fieldset-label{
+    right: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.card-charge-text{
+    margin: 10px!important;
+}
+
+.order-col-checkout{
+    background-color: rgba(255 255 255 / 80%);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.order-summary-p{
+    margin-top: 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.order-summary-costs{
+    margin-top: 10px;
+}
+
+.order-hr-checkout{
+    margin-top: 15px!important;
+}
+
+.checkout-row{
+    margin-top: 20px;
+}
+
+.profile-form-col{
+    padding-bottom: 60px;
+    margin-bottom: 30px;
+}
+
+.form-control:focus {
+    border-radius: 5px;
+    border: 0!important;
+}
+
+.article-div{
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(153 193 199 / 80%);
+    border-radius: 10px;
+    min-width: 100%;
+    min-height: 90%;
+}
+
+.article-title {
+    margin: 30px 30px;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.membership-name{
+    font-size: 20px;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+
+.membership-p{
+    margin-top: 10px;
+    font-size: 18px;
+    letter-spacing: .5px;
+}
+
+.strong-membership{
+    margin: 10px 0 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.membership-select{
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.membership-container{
+    width: 95%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.signout-p{
+    color: #46a9ff;
+    margin: 30px;
+}
+
+.login-div{
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(153 193 199 / 80%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.login-signup-p{
+    color: #46a9ff;
+    margin-top: 20px;
+    letter-spacing: .5;
+}
+
+.login-signup-p-a{
+    color: white;
 }
 
 @media (max-width: 1369px){
@@ -735,6 +869,11 @@ div.card{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.login-div{
+    width: 80%;
+}
+
 }
 
 @media (max-width: 765px){
@@ -744,7 +883,7 @@ div.card{
 }
 
 
-@media (max-width: 415px){
+@media (max-width: 452px){
 .shopping-bag-icon {
     right: 21%;
     top: 22px;
@@ -904,6 +1043,31 @@ h1.entry-page-header{
 .keep-shopping-button{
     margin-top: 20px;
 }
+
+.checkout-row{
+    margin-top: 5px;
+}
+
+.mb-5, .my-5 .order-for-checkout{
+    margin-bottom: 20px!important;
+}
+
+.profile-form-col{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.order-history-col{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.blog-div {
+    text-align: center;
+    margin: 0 10px 20px;
+    min-width: 90%;
+    min-height: 90%;
 }
 
 @media (max-width: 321px){

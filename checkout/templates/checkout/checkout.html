@@ -11,12 +11,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
     
-
-        <div class="row">
+        <div class="row checkout-row">
             <div class="col-12 col-lg-6 order-lg-last mb-5 order-form-checkout">
-                <p class="text-muted">Order Summary ({{ product_count }})</p>
+                <div class="col-12 order-col-checkout">
+                <p class="order-summary-p">Order Summary ({{ product_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
                         <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -38,16 +37,16 @@
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">{% if item.product.has_sizes %}Size: {{ item.size_or_flavour|upper }}{% elif item.product.flavours %}Flavour: {{ item.size_or_flavour|upper }}{% else %}N/A{% endif %}</p>
+                            <p class="my-0 small">{% if item.product.has_sizes %}Size: {{ item.size_or_flavour|upper }}{% elif item.product.flavours %}Flavour: {{ item.size_or_flavour|title }}{% else %}N/A{% endif %}</p>
                             <p class="my-0 small text-muted">{% if item.product.category.name == 'Membership' %}Months: {% else %}Qty: {% endif %}{{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 small">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
-                <hr class="my-0">
-                <div class="row text-black text-right">
+                <hr class="my-0 order-hr-checkout">
+                <div class="row text-black text-right order-summary-costs">
                     <div class="col-7 offset-2">
                         <p class="my-0">Order Total:</p>
                         <p class="my-0">Delivery:</p>
@@ -60,7 +59,9 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="col-12 col-lg-6">
+            <div class="col-12 checkout-form-col">
                 <p class="text-muted">Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -101,19 +102,14 @@
                     </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
-						<a href="{% url 'view_cart' %}" class="btn btn-outline-black rounded-0">
-							<span class="icon">
-								<i class="fas fa-chevron-left"></i>
-							</span>
-							<span class="font-weight-bold">Adjust Bag</span>
+						<a href="{% url 'view_cart' %}" class="btn buttons">
+							Adjust Bag
 						</a>
-						<button id="submit-button" class="btn btn-black rounded-0">
-							<span class="font-weight-bold">Complete Order</span>
-							<span class="icon">
+						<button id="submit-button" class="btn buttons">
+							Complete Order
 								<i class="fas fa-lock"></i>
-							</span>
 						</button>
-						<p class="small text-danger my-0">
+						<p class="small text-danger my-0 card-charge-text">
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
@@ -122,8 +118,9 @@
 					</div>
                 </form>
             </div>
+            </div>
         </div>
-    </div>
+    
 {% endblock %}
 
 {% block postloadjs %}

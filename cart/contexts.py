@@ -19,7 +19,7 @@ def cart_contents(request):
             cart_items.append({
                 'item_id': item_id,
                 'quantity': item_data,
-                'product': product
+                'product': product,
             })
         else:
             product = get_object_or_404(Product, pk=item_id)

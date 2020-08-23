@@ -62,7 +62,7 @@ def edit_cart(request, item_id):
 
     if size_or_flavour:
         if quantity > 0:
-            cart[item_id]['items_by_variant'][size_or_flavour] = quantity
+            cart[item_id]['items_by_variant'][size_or_flavour] += quantity
             messages.success(request, f'Updated {size_or_flavour.title()}{product.name} quantity \
                 to {cart[item_id]["items_by_variant"][size_or_flavour]}')
         else:

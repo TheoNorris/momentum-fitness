@@ -5,32 +5,20 @@
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+{% block title %}
+<h1 class="page-header">Thank You!</h1>
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Thank You</h2>
-                <hr>
-                <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
-            </div>
-        </div>
+  
+                
+        <p class="information-success">Your order information is below. A confirmation email will be sent to <strong class="success-email">{{ order.email }}</strong>.</p>
+           
 
-        <div class="row">
-            <div class="col-12 col-lg-7">
                 <div class="order-confirmation-wrapper p-2 border">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Info:</small>
+                            <small class="">Order Info:</small>
                         </div>
                     </div>
 
@@ -54,7 +42,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Details:</small>
+                            <small class="">Order Details:</small>
                         </div>
                     </div>
 
@@ -66,14 +54,14 @@
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                            <p class="small mb-0">{{ item.quantity }} @ €{{ item.product.price }} each</p>
                         </div>
                     </div>
                     {% endfor %}
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Delivering To:</small>
+                            <small class="">Delivering To:</small>
                         </div>
                     </div>
 
@@ -157,7 +145,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Billing Info:</small>
+                            <small class="">Billing Info:</small>
                         </div>
                     </div>
 
@@ -188,26 +176,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-			<div class="col-12 col-lg-7 text-right">
+           
                 {% if from_profile %}
-                    <a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
+                    <a href="{% url 'profile' %}" class="btn buttons success-button">
                         <span class="icon mr-2">
                             <i class="fas fa-angle-left"></i>
                         </span>
                         <span class="text-uppercase">Back to Profile</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'products' %}" class="btn btn-black rounded-0 my-2">
+                    <a href="{% url 'products' %}" class="btn buttons success-button">
                         <span class="icon mr-2">
                             <i class="fas fa-gifts"></i>
                         </span>
                         <span class="text-uppercase">Back to Products</span>
                     </a>
                 {% endif %}
-			</div>
-		</div>
-    </div>
+			
 {% endblock %}

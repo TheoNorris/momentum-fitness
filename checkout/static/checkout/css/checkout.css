@@ -64,3 +64,90 @@ select option[value=""] {
     margin: 0;
     height: 100%;
 }
+
+.checkout-form-col{
+    background-color: rgb(153 193 199 / 80%);   
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#payment-form .form-control, #card-element {
+    border-radius: 5px;
+    border: 0!important;
+}
+
+.fieldset-label{
+    right: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.card-charge-text{
+    margin: 10px!important;
+}
+
+.order-col-checkout{
+    background-color: rgba(255 255 255 / 80%);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.order-summary-p{
+    margin-top: 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.order-summary-costs{
+    margin-top: 10px;
+}
+
+.order-hr-checkout{
+    margin-top: 15px!important;
+}
+
+.checkout-row{
+    margin-top: 20px;
+}
+
+.success-email{
+    color: white;
+    letter-spacing: 1px;
+}
+
+.information-success{
+    color: #1aabff;
+    margin-bottom: 20px;
+}
+
+.order-confirmation-wrapper{
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(153 193 199 / 80%);
+    border-radius: 10px;
+    padding: 20px 20px 20px 0!important;   
+
+}
+
+.success-button{
+    margin-top: 20px;
+    color: white;
+}
+
+.text-right{
+    padding: 0;
+}
+
+@media (max-width: 415px){
+    .checkout-row{
+    margin-top: 5px;
+    }
+
+    .mb-5, .my-5 .order-for-checkout{
+    margin-bottom: 20px!important;
+    }
+
+    .order-confirmation-wrapper {
+    width: 95%;
+}

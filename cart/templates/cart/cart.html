@@ -59,7 +59,7 @@
             {% csrf_token %}
             <input class="cart-quantity-counter" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
            <div class="remove-update-cart-item">
-            <a class="remove-button-cart" href="{% url 'remove_from_cart' item.item_id %}" class="">Remove</a>
+            <a class="remove-button-cart" href="{% url 'remove_from_cart' item.item_id %}">Remove</a>
             <input type="submit" class="text-info update-button-cart" value="Update">
             </div>
             {% if item.product.has_sizes or item.product.flavours %}
