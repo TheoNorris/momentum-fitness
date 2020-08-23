@@ -771,11 +771,15 @@ letter-spacing: 1px;
 .login-signup-p{
     color: #46a9ff;
     margin-top: 20px;
-    letter-spacing: .5;
+    letter-spacing: 0.5px;
 }
 
 .login-signup-p-a{
     color: white;
+}
+
+.reset-p{
+    margin-bottom: 20px;
 }
 
 @media (max-width: 1369px){

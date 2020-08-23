@@ -2,111 +2,95 @@
 <h1 class="page-header">Shopping Cart</h1>
 {% endblock %} {% block content %}
 <div class="container-fluid outter-cart-container">
-{% for item in cart_items %}
-<div class="row">
-  <div class="overlay cart-overlay">
-    <div class="product-cart-container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3">
-          {% if item.product.image %}
-          <div class="product-cart-image-div">
-            <a href="{{ item.product.image.url }}" target="_blank">
-              <img
-                class="product-cart-image"
-                src="{{ item.product.image.url }}"
-                alt="{{ item.product.name }}"
-              />
-            </a>
-          </div>
-          {% else %}
-          <div class="product-image-div">
-            <a href="{{ item.product.image.url }}" target="_blank">
-              <img
-                class="product-cart-image"
-                src="{{ MEDIA_URL }}noimage.png"
-                alt="{{ item.product.name }}"
-              />
-            </a>
-          </div>
-          {% endif %}
-        </div>
-        <div class="col-lg-9 col-md-9">
-        <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <h5 class="cart-table-headers">Product Name</h5>
-            <hr />
-            <p class="cart-details-p">{{ item.product.name }}</p>
-            {% if item.product.has_sizes %}
-                <p class="cart-details-p">Size: <strong>{{ item.size_or_flavour|upper }}</strong></p>
-            {% elif item.product.flavours %}
-                <p class="cart-details-p">Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
-            {% endif %}
-          </div>
-          <div class="col-lg-2 col-md-2">
-            <h5 class="cart-table-headers">Price</h5>
-            <hr />
-            <p class="cart-details-p">€ {{ item.product.price }}</p>
-          </div>
-          <div class="col-lg-3 col-md-3">
-          {% if item.product.category.name == 'Membership' %}
-            <h5 class="cart-table-headers">Months:</h5>
-          {% else %}
-            <h5 class="cart-table-headers">Qty:</h5>
-          {% endif %}     
+    {% for item in cart_items %}
+    <div class="row">
+        <div class="overlay cart-overlay">
+            <div class="product-cart-container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        {% if item.product.image %}
+                        <div class="product-cart-image-div">
+                            <a href="{{ item.product.image.url }}" target="_blank">
+                                <img class="product-cart-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="product-image-div">
+                            <a href="{{ item.product.image.url }}" target="_blank">
+                                <img class="product-cart-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" />
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <h5 class="cart-table-headers">Product Name</h5>
+                                <hr />
+                                <p class="cart-details-p">{{ item.product.name }}</p>
+                                {% if item.product.has_sizes %}
+                                <p class="cart-details-p">Size: <strong>{{ item.size_or_flavour|upper }}</strong></p>
+                                {% elif item.product.flavours %}
+                                <p class="cart-details-p">Flavour: <strong>{{ item.size_or_flavour|title }}</strong></p>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <h5 class="cart-table-headers">Price</h5>
+                                <hr />
+                                <p class="cart-details-p">€ {{ item.product.price }}</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                {% if item.product.category.name == 'Membership' %}
+                                <h5 class="cart-table-headers">Months:</h5>
+                                {% else %}
+                                <h5 class="cart-table-headers">Qty:</h5>
+                                {% endif %}
 
-            <hr/>
-            <form class="update-form" method="POST" action="{% url 'edit_cart' item.item_id %}">
-            {% csrf_token %}
-            <input class="cart-quantity-counter" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-           <div class="remove-update-cart-item">
-            <a class="remove-button-cart" href="{% url 'remove_from_cart' item.item_id %}">Remove</a>
-            <input type="submit" class="text-info update-button-cart" value="Update">
+                                <hr />
+                                <form class="update-form" method="POST" action="{% url 'edit_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    <input class="cart-quantity-counter" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}" />
+                                    <div class="remove-update-cart-item">
+                                        <a class="remove-button-cart" href="{% url 'remove_from_cart' item.item_id %}">Remove</a>
+                                        <input type="submit" class="text-info update-button-cart" value="Update" />
+                                    </div>
+                                    {% if item.product.has_sizes or item.product.flavours %}
+                                    <input type="hidden" name="product_variable" value="{{ item.size_or_flavour }}" />
+                                    {% endif %}
+                                </form>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <h5 class="cart-table-headers">Subtotal</h5>
+                                <hr />
+                                <p class="cart-details-p product-cart-price">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {% if item.product.has_sizes or item.product.flavours %}
-                <input type="hidden" name="product_variable" value="{{ item.size_or_flavour }}">
-            {% endif %}
-            </form>
-          </div>
-          <div class="col-lg-2 col-md-2">
-            <h5 class="cart-table-headers">Subtotal</h5>
-            <hr />
-            <p class="cart-details-p product-cart-price">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-          </div>
         </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-{% endfor %}
-{% if cart_items %}
-<div class="cart-total-div">
-<h5 class="cart-total-sum">Cart Total: €{{ total|floatformat:2 }}</h5>
-<h5 class="cart-total-sum">Delivery: €{{ delivery|floatformat:2 }}</h5>
-<h5 class="cart-total-sum">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
-{% if free_delivery_delta > 0 %}
-<p>
-    You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!
-</p>
-{% endif %}
-<a href="{% url 'products' %}" class="btn buttons keep-shopping-button">Keep Shopping</a>
-<a href="{% url 'checkout' %}" class="btn buttons">Secure Checkout</a>
-</div>
+    {% endfor %} {% if cart_items %}
+    <div class="cart-total-div">
+        <h5 class="cart-total-sum">Cart Total: €{{ total|floatformat:2 }}</h5>
+        <h5 class="cart-total-sum">Delivery: €{{ delivery|floatformat:2 }}</h5>
+        <h5 class="cart-total-sum">Grand Total: €{{ grand_total|floatformat:2 }}</h5>
+        {% if free_delivery_delta > 0 %}
+        <p>You could get free delivery if you spend <strong>€{{ free_delivery_delta }}</strong> more!</p>
+        {% endif %}
+        <a href="{% url 'products' %}" class="btn buttons keep-shopping-button">Keep Shopping</a>
+        <a href="{% url 'checkout' %}" class="btn buttons">Secure Checkout</a>
+    </div>
 </div>
 {% else %}
-    <h2 class="empty-cart-h2">Your <i class="fas fa-shopping-cart empty-cart-cart"></i> is empty!</h2>
-    <a href="{% url 'products' %}" class="btn buttons">Products</a>
-{% endif %}
-
-{% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
+<h2 class="empty-cart-h2">Your <i class="fas fa-shopping-cart empty-cart-cart"></i> is empty!</h2>
+<a href="{% url 'products' %}" class="btn buttons">Products</a>
+{% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
 
 <script>
     // Javascript taken from stack overflow to enable modal form submission
     function form_submit() {
-    document.getElementById("delete_form").submit();
+        document.getElementById("delete_form").submit();
     }
 </script>
 

@@ -1,16 +1,12 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %}
 <h1 class="page-header">Fitness Questionaire</h1>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <!--A health form to find out members specific needs-->
 <div class="health-form-container">
-                <p class="text-muted">Please take a minute to fill out this form to help us understand what you need most!</p>
-                <form class="mt-3" action="{% url 'health_form' %}" method="POST" id="health-form">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button class="">Submit</button>
-                </form>
-            </div>
+    <p class="text-muted">Please take a minute to fill out this form to help us understand what you need most!</p>
+    <form class="mt-3" action="{% url 'health_form' %}" method="POST" id="health-form">
+        {% csrf_token %} {{ form|crispy }}
+        <button class="">Submit</button>
+    </form>
+</div>
 {% endblock %}

@@ -1,10 +1,7 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %}
 <h1 class="page-header">Members Tips and Tricks</h1>
-{% endblock %}
-{% block content %}
-<!--Blog articles dependent on users choice-->
+{% endblock %} {% block content %}
+<!--Blog articles dependent on members choice-->
 <div class="article-div">
     <img class="blog-image" src="{{ article.image.url }}" alt="Dog" />
     <h2 class="article-title">{{ article.headline }}</h2>
