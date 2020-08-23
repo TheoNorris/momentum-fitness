@@ -30,7 +30,7 @@ GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['momentum-health-and-fitness.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['momentum-health-centers.herokuapp.com', 'localhost']
 
 
 # Application definition
