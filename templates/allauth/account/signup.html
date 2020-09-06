@@ -4,9 +4,13 @@
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
+{% block title %}
+<div class="header-and-select-div">
 <h1 class="page-header">Sign Up!</h1>
+</div>
+{% endblock %}
 
+{% block content %}
 <p class="login-signup-p">{% blocktrans %}Already have an account? Then please <a class="login-signup-p-a" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
 <div class="login-div">

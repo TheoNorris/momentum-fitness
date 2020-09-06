@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.conf import settings
+import os
 
 
 def index(request):
@@ -9,7 +9,7 @@ def index(request):
 
 def home_about(request):
     context = {
-        'api_key': settings.GOOGLE_MAPS_API_KEY
+        'api_key': os.environ.get('GOOGLE_MAPS_API_KEY')
     }
     """A view to return the home_about page"""
     return render(request, 'home/home_about.html', context)

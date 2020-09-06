@@ -4,9 +4,13 @@
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
-{% block content %}
+{% block title %}
+<div class="header-and-select-div">
 <h1 class="page-header">Verify your Email Address</h1>
+</div>
+{% endblock %}
 
+{% block content %}
 {% url 'account_email' as email_url %}
 
 <p class="login-signup-p">{% blocktrans %}This part of the site requires us to verify that

@@ -104,13 +104,10 @@
 <p class="gold-member-text"><a href="{% url 'membership' %}" class="gold-member-link">Join us</a> now and receive a gold membership for €39.99 a month!</p>
 </div>
 </header>
-
-  <div class="container-fluid base-container">
+<div id="page-container">
+  <div class="container-fluid base-container content-wrap">
  {% block imagetop %}{% endblock %}
-  <div class="header-and-select-div">
 {% block title %}{% endblock %}
-
-</div>
 <hr>
 
     {% block content %}
@@ -143,6 +140,7 @@
                 <a target="_blank" class="theo-tag" href="https://github.com/TheoNorris">Theo Norris</a>
             </p>
         </footer>
+</div>
 
 
     {% block postloadjs %}

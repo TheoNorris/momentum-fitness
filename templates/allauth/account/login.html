@@ -5,10 +5,12 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
-
+{% block title %}
+<div class="header-and-select-div">
 <h1 class="page-header">Sign In!</h1>
-
+</div>
+{% endblock %}
+{% block content %}
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}

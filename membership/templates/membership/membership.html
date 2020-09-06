@@ -1,5 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block title %}
+<div class="header-and-select-div">
 <h1 class="page-header">Become a Member now!</h1>
+</div>
 {% endblock %} {% block content %} {% for product in products %}
 <div class="container product-detail-container membership-container">
     <div class="row">
@@ -8,7 +10,7 @@
                 <img class="membership-detail-image" src="{{ product.image.url }}" alt="Membership image" />
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="membership-col-8 col-lg-8">
             <h4 class="membership-name">{{ product.name }}</h4>
 
             <p class="membership-p">{{product.description}}</p>
@@ -17,7 +19,7 @@
             {% if request.user.is_authenticated %}
             <form action="{% url 'add_to_cart' product.id %}" method="POST">
                 {% csrf_token %}
-                <div>
+                <div class="membership-select-div">
                     <select class="membership-select" name="quantity" id="membership">
                         <option value="1" selected>1 Month</option>
                         <option value="6">6 Months</option>

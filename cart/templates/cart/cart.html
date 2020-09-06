@@ -1,5 +1,7 @@
 {% extends "base.html" %}{% load cart_tools %} {% block title %}
+<div class="header-and-select-div">
 <h1 class="page-header">Shopping Cart</h1>
+</div>
 {% endblock %} {% block content %}
 <div class="container-fluid outter-cart-container">
     {% for item in cart_items %}
@@ -55,7 +57,7 @@
                                         <input type="submit" class="text-info update-button-cart" value="Update" />
                                     </div>
                                     {% if item.product.has_sizes or item.product.flavours %}
-                                    <input type="hidden" name="product_variable" value="{{ item.size_or_flavour }}" />
+                                    <input type="hidden" name="product_variant" value="{{ item.size_or_flavour }}" />
                                     {% endif %}
                                 </form>
                             </div>
