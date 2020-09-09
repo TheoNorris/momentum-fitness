@@ -143,13 +143,13 @@ nav.bg-light{
 .header-and-select-div{
     background-color: rgb(153 193 199 / 80%);
     border-radius: 50px;
-    margin: 10px auto 10px;
+    margin: 10px auto 25px;
     padding: 10px 30px;
     width: fit-content;
 }
 
 .page-header{
-    font-size: 50px;
+    font-size: 250%;
     font-weight: 300;
     letter-spacing: 5px;
     display: contents;
@@ -800,7 +800,7 @@ letter-spacing: 1px;
 
 .signout-p{
     color: #46a9ff;
-    margin: 30px;
+    margin-bottom: 30px;
 }
 
 .login-div{
@@ -958,6 +958,32 @@ div.card{
     width: 80%;
 }
 
+.home-about-row{
+    margin-bottom: 20px;
+}
+
+.home-about-div.home-text-div{
+    margin: 0;
+}
+
+.map-outer-div{
+    margin-top: 0;
+}
+
+.blog-div{
+    margin: 15px auto;
+}
+
+div.order-col-checkout{
+    padding: 5px 25px 15px;
+}
+
+.mt-5, .my-5 {
+    margin-top: 15px!important;
+}
+
+.checkout-form-col{
+    margin-bottom: 20px;
 }
 
 @media (max-width: 903px){
@@ -1177,5 +1203,69 @@ h1.entry-page-header{
 
 .product-cart-container{
     width: 250px;
+}
+}
+
+@media (max-width: 281px){
+
+.home-about-image{
+    margin-bottom: 5px;
+}
+
+.home-about-gym-description {
+    font-size: 15px;
+}
+
+.home-about-row{
+    margin-bottom: 10px;
+}
+
+h5.card-title {
+    min-height: 30px;
+}
+
+#sort-selector{
+    font-size: 10px;
+}
+
+.header-and-select-div{
+    margin-bottom: 15px;
+}
+
+.order-history-col{
+    display: none;
+}
+
+.profile-form-col{
+    margin-bottom: 15px;
+}
+
+.membership-select{
+    margin-bottom: 15px;
+}
+
+.membership-col-8 {
+    padding: 20px 10px;
+}
+
+.detail-card-text {
+    margin-left: 5px;
+}
+
+.product-detail-image {
+    width: 200px;
+}
+
+.cart-total-div{
+    margin-bottom: 15px;
+}
+
+.shopping-bag-icon {
+    right: 25%;
+    top: 38px;
+}
+
+.mt-5, .my-5{
+    margin-top: 0!important;
 }
 }
