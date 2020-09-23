@@ -1043,6 +1043,10 @@ p.signout-p{
 }
 
 @media (max-width: 452px){
+body {
+    background: rgb(0 9 10 / 80%);
+}
+
 .shopping-bag-icon {
     right: 21%;
     top: 22px;
@@ -1370,4 +1374,5 @@ hr {
 
 div.order-col-checkout {
     padding: 5px 40px 15px;
+}
 }

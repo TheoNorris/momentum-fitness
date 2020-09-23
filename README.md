@@ -140,6 +140,9 @@ original form.
 This website was tested across multiple browsers (Chrome, Safari, Firefox and Microsoft edge.) It is also responsive,
 having tested it on chrome developer tools across ipad, various iphones, samsungs etc. I have also tested it on iphone x, iphone 7, macbook and desktop.
 
+I chose to remove the hero image from mobile devices and implicate a simple grey background for the reason that, when I was viewing my project on an actual iphone, rather than developer tools
+I noticed that the contrasts and colours were too intense for the display. 
+
 ### User stories Testing
 
 - As a user, I can see what the main focus of the website is.
