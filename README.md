@@ -78,7 +78,6 @@ into classes and book times with personal trainers.
 
 - I will also update the maps to have tags to describe the exact locations of the gyms.
 
-
 ## technologies used
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
@@ -135,12 +134,11 @@ into classes and book times with personal trainers.
 
 - My Python has been tested using [Pep8online](http://pep8online.com/).
 
-I acknowledge a few lines of my pep8 may not be correct, again I was running on a very tight deadline so I didn't have time to research.
+I acknowledge a few lines of my pep8 may not be correct, again I was running on a very tight deadline and while formatting it, it broke some of the code so I had to keep some of it in it's 
+original form.
 
 This website was tested across multiple browsers (Chrome, Safari, Firefox and Microsoft edge.) It is also responsive,
 having tested it on chrome developer tools across ipad, various iphones, samsungs etc. I have also tested it on iphone x, iphone 7, macbook and desktop.
-Please note I was not able to make my product viewable on the Surface Duo or the Galaxy Fold as it appears they were added on the moments before my 
-deadline and I was working on a very, very tight schedule!
 
 ### User stories Testing
 
@@ -228,23 +226,18 @@ deadline and I was working on a very, very tight schedule!
 
 ### Problems Encountered
 
-During this project I encountered various small problems, some I fixed and some were just not manageable in the short timeframe I had and
-will have to be fixed after the project
+During this project I encountered various small problems, some I fixed and some were just not manageable in the short timeframe. I acknowledge there 
+are many improvements that can be made for this site but I will continue to advance my knowledge in specific technologies and build my portfolio now that
+the course this project was used for is complete. 
 
-- One of the biggest problems I encountered was hosting to Heroku. This is not usually a problem but I nor two of my tutors could find this problem
-for several hours. Sadly, it turns out it was a mispelling in the wsgi file and wasted many very crucial last hours of this project.
+    - One problem I have is that when editing the quantity in product details or in the cart the quantity chosen only adds onto the existing quantity.
+    This is because I haven't used javascript in this aspect of my work. This is mainly because of the timeframe I had for completing this project.
 
-- For this reason I have some small bugs remaining.
+    - I also have a health form that I was planning to link in when a user bought a membership, questioning reasons for signing up for a membership. Again, due to 
+    time constraints, I did not find the time to complete this.
 
-    - One of these bugs is in the checkout. If you choose a quantity first in product details, then change the quantity in the cart. After this,
-   you go back to the products and try to alter the products again, the app crashes. This is very dissapointing to leave until I have been graded.
-
-    - A second disappointing problem is that when you select a product with a size or a flavour, first the size or flavour will come up. But, if you 
-  then alter the quantity again it the cart somehow loses this detail. If I just had a little more time I'm sure I could solve this!
-
-    - I also have a health form that I was planning to link in when a user bought a membership but I just have not had time. Even in this 26 hour last push.
-
-    - Using a python key in my javasript map meant it is only functioning in developer mode. I will fix this when I have more time. 
+    - I had difficulties using python to hide my maps api key. Because of this the maps api key is not currently hidden. Although within the google dashboard settings,
+    it is set so that only this website can use this key.
 
 ## Deployment
 

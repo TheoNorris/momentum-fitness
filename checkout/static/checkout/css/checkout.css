@@ -112,7 +112,7 @@ select option[value=""] {
 }
 
 .success-email{
-    color: white;
+    color: #f3cd03;
     letter-spacing: 1px;
 }
 
@@ -150,4 +150,10 @@ select option[value=""] {
 
     .order-confirmation-wrapper {
     width: 95%;
+}
+}
+@media (max-width: 282px){
+.success-button{
+    margin-bottom: 30px;
+}
 }

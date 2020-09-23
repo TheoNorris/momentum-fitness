@@ -16,7 +16,7 @@
             </form>
         </div>
     </div>
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 order-history-col-outer">
         <div class="col-12 order-col-checkout order-history-col">
             <p class="text-muted">Order History</p>
             <div class="order-history table-responsive">
@@ -42,8 +42,8 @@
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
                                     <li class="small">
-                                        {% if item.product.has_sizes %} Size {{ item.product.product_variant|upper }} {% elif item.product.flavours %} Flavour {{ item.product.product_variant|upper }} {% endif %}{{ item.product.name }} x{{
-                                        item.quantity }}
+                                        {{ item.product.name }} 
+                                        x{{ item.quantity }}
                                     </li>
                                     {% endfor %}
                                 </ul>

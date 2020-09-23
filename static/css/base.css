@@ -40,6 +40,10 @@ a:hover {
     top: 25px;
 }
 
+.nav-text{
+    display: contents;
+}
+
 .navbar-light .navbar-toggler{
     position: absolute;
     right: 3%;
@@ -143,7 +147,7 @@ nav.bg-light{
 .header-and-select-div{
     background-color: rgb(153 193 199 / 80%);
     border-radius: 50px;
-    margin: 10px auto 25px;
+    margin: 10px auto 15px;
     padding: 10px 30px;
     width: fit-content;
 }
@@ -301,6 +305,10 @@ video{
     margin: 15px 0 25px;
     width: 100%;
     border-radius: 10px;
+}
+
+.home-about-row{
+    margin-bottom: 15px;
 }
 
 .shopping-bag-icon{
@@ -494,8 +502,11 @@ margin-left: 15px;
 
 
 .product-cart-image{
-    height: 150px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
 }
+
 
 .product-cart-container{
     width: 800px;
@@ -523,7 +534,7 @@ margin-left: 15px;
 .cart-total-div{
     background-color: rgb(153 193 199 / 80%);
     width: 50%;
-    margin: 0 auto;
+    margin: 10px auto 0;
     padding: 30px;
     border-radius: 10px;
 }
@@ -609,6 +620,7 @@ margin-left: 15px;
 .outter-cart-container{
     width: 90%;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .membership-detail-image{
@@ -726,8 +738,13 @@ letter-spacing: 1px;
 }
 
 .profile-form-col{
+    margin-top: 20px;
     padding-bottom: 60px;
     margin-bottom: 30px;
+}
+
+.order-history-col{
+    margin: 20px 0;
 }
 
 .form-control:focus {
@@ -860,6 +877,10 @@ a.login-or-create{
 .entry-page-p{
     margin: 10px;
 }
+
+div.order-col-checkout {
+    padding: 10px 25px;
+}
 }
 
 @media (max-width: 993px){
@@ -904,6 +925,10 @@ a.login-or-create{
 
 #page-container{
     min-height: 90vh;
+}
+
+.card-title {
+    min-height: 100px;
 }
 }
 
@@ -986,6 +1011,24 @@ div.order-col-checkout{
     margin-bottom: 20px;
 }
 
+h5.card-title {
+    min-height: 0px;
+    margin: 10px auto;
+    }
+
+.header-and-select-div {
+    margin: 10px auto 0;
+}
+
+p.signout-p{
+    margin-bottom: 10px;
+}
+
+.membership-container{
+    margin: 30px auto;
+}
+}
+
 @media (max-width: 903px){
 
 .keep-shopping-button{
@@ -998,7 +1041,6 @@ div.order-col-checkout{
     width: 300px;
 }
 }
-
 
 @media (max-width: 452px){
 .shopping-bag-icon {
@@ -1023,12 +1065,18 @@ padding: 0;
     margin-left: 10px;
 }
 
-.title-p{
-    margin-left: 15px;
+.nav-text{
+    display: block;
 }
+
+.title-p{
+    margin-left: 10px;
+}
+
 .gold-member-text{
     font-size: 8px;
 }
+
 .navbar{
     padding: 5px
 }
@@ -1040,8 +1088,9 @@ padding: 0;
 .base-container {
     padding: 10px 5px;
 }
+
 hr{
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 
 .home-about-div {
@@ -1058,6 +1107,10 @@ hr{
 
 .home-about-image {
     margin-top: 5px;
+}
+
+.product-cart-image{
+    border-radius: 10px 10px 0 0;
 }
 
 .copyright-text {
@@ -1092,6 +1145,7 @@ hr{
     color: white;
     margin-left: 10px;
 }
+
 #sort-selector{
     height: 20px;
     margin-right: 10px;
@@ -1099,9 +1153,6 @@ hr{
     width: 100px;
 }
 
-hr{
-    margin-top: 10px;
-}
 .overlay {
     margin-top: 30px;
 }
@@ -1171,7 +1222,7 @@ h1.entry-page-header{
 
 .profile-form-col{
     width: 95%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .order-history-col{
@@ -1185,6 +1236,38 @@ h1.entry-page-header{
     margin: 0 10px 20px;
     min-width: 90%;
     min-height: 90%;
+}
+
+.home-about-image{
+    margin-bottom: 5px;
+}
+
+.home-about-row {
+    margin-bottom: 10px;
+}
+
+.header-and-select-div {
+margin: 10px auto;
+}
+
+.container-fluid.base-container.content-wrap {
+    padding-bottom: 6rem;
+}
+
+.overlay.product-detail-overlay {
+    margin-top: 10px;
+}
+
+.outter-cart-container {
+    margin-bottom: 20px;
+}
+
+.cart-row{
+    margin-top: 10px;
+}
+
+.membership-container {
+    margin: 15px auto 20px;
 }
 }
 
@@ -1209,7 +1292,7 @@ h1.entry-page-header{
 @media (max-width: 281px){
 
 .home-about-image{
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .home-about-gym-description {
@@ -1268,4 +1351,23 @@ h5.card-title {
 .mt-5, .my-5{
     margin-top: 0!important;
 }
+
+hr {
+    margin-top: 10px;
+}
+
+.header-and-select-div {
+    margin-bottom: 0;
+}
+
+.product-detail-container{
+    margin-bottom: 30px;
+}
+
+.order-history-col-outer{
+    margin-bottom: 15px;
+}
+
+div.order-col-checkout {
+    padding: 5px 40px 15px;
 }
